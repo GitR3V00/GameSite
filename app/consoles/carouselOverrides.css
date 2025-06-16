@@ -1,0 +1,11 @@
+.react-multiple-carousel__arrow {
+  display: none;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: 20px;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: 20px; /* Move back into view */
+}
