@@ -173,7 +173,21 @@ Backward Compatibility: Compatible with original Game Boy games."`,
       "/ConsolesPage/GameboyAdvance_4.jpg",
       "/ConsolesPage/GameboyAdvance_5.jpg",
     ],
-    spec: "",
+    spec: `High-resolution TFT screen with switchable lighting
+Screen size: 40.8mm x 61.2mm
+Displayable colors: 240 x 160 pixels
+Game Paks interchangeable
+Volume control provided
+Headphone connection available via dialogue cable port adapter (available separately)
+Released in February 2003
+Ran an ARM7 CPU with a Z80 co-processor
+Compatible with all Game Boy and Game Boy Color cartridges
+Physical size when closed: 8.4 × 8.2 × 2.44 cm
+Weight: 142 grams
+Reflective TFT color LCD screen
+Frontlight integrated LCD
+Rechargeable lithium-ion battery
+Battery life: 10 hours (light on), 18 hours (light off)`,
   },
   {
     name: "Nintendo DS",
