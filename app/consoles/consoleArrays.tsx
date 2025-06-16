@@ -155,7 +155,10 @@ export const consoles = [
       "/ConsolesPage/GameboyColor_4.jpg",
       "/ConsolesPage/GameboyColor_5.jpg",
     ],
-    spec: "",
+    spec: `Screen: 2.0-inch color TFT LCD, capable of displaying up to 32,768 colors.
+CPU: Custom 8-bit CPU running at 4.19 MHz, which is twice as fast as the original Game Boy.
+Memory: 32 KB of RAM, which is four times the memory of the original Game Boy.
+Backward Compatibility: Compatible with original Game Boy games."`,
   },
   {
     name: "Gameboy Advance",
