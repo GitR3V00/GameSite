@@ -6,7 +6,7 @@ import React from "react";
 import "./carouselOverrides.css";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { consoles, consoleBackOrder } from "./consoleArrays";
+import { consoles } from "./consoleArrays";
 
 const Consoles = () => {
   const responsive = {
@@ -21,6 +21,14 @@ const Consoles = () => {
     router.push(`/consoles/${slug}`);
   };
 
+  const availableConsoles = consoles.filter(
+    (console) => console.isBacklog === false
+  );
+
+  const filteredBacklogConsoles = consoles.filter(
+    (console) => console.isBacklog === true
+  );
+
   return (
     <div className="mt-32">
       <div className="border-b mx-auto px-4 max-w-screen-xl mb-10">
@@ -28,7 +36,7 @@ const Consoles = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 max-w-screen-xl mx-auto">
-        {[...consoles]
+        {[...availableConsoles]
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((console) => (
             <div
@@ -73,7 +81,8 @@ const Consoles = () => {
               containerClass="carousel-container"
               itemClass="px-4 justify-center"
             >
-              {consoleBackOrder.map((console) => (
+              {/*Backlog section*/}
+              {filteredBacklogConsoles.map((console) => (
                 <div
                   key={console.name}
                   className="w-full max-w-[350px] mx-auto flex flex-col justify-center bg-gray-500/85 rounded-lg p-4 cursor-pointer transition-all duration-200 hover:scale-105 hover:bg-gray-600/85"

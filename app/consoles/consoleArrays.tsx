@@ -1,12 +1,14 @@
-export const consoleBackOrder = [
-  { name: "Xbox One", img: "/ConsolesPage/XboxOne.jpg" },
-  { name: "SNES", img: "/ConsolesPage/SNES.jpg" },
-  { name: "Nintendo 64", img: "/ConsolesPage/N64.jpg" },
-  { name: "Gameboy Advance SP", img: "/ConsolesPage/GameboyAdvanceSP.jpg" },
-  { name: "Game and Watch", img: "/ConsolesPage/GameAndWatch.jpg" },
-];
+export type Console = {
+  name: string;
+  img: string;
+  slug: string;
+  description: string;
+  images: string[];
+  spec: string;
+  isBacklog: boolean;
+};
 
-export const consoles = [
+export const consoles: Console[] = [
   {
     name: "Playstation 5",
     img: "/ConsolesPage/Playstation5Console.jpg",
@@ -21,6 +23,7 @@ export const consoles = [
       "/ConsolesPage/Playstation5_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Xbox Series X",
@@ -36,6 +39,7 @@ export const consoles = [
       "/ConsolesPage/XboxSeriesX_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Gamecube",
@@ -51,6 +55,7 @@ export const consoles = [
       "/ConsolesPage/Gamecube_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Playstation 1",
@@ -66,6 +71,7 @@ export const consoles = [
       "/ConsolesPage/Playstation1_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Playstation 2",
@@ -81,6 +87,7 @@ export const consoles = [
       "/ConsolesPage/Playstation2_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Xbox 360",
@@ -96,6 +103,7 @@ export const consoles = [
       "/ConsolesPage/Xbox360_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Playstation 3",
@@ -111,13 +119,14 @@ export const consoles = [
       "/ConsolesPage/Playstation3_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Gameboy",
     img: "/ConsolesPage/Gameboy.png",
     slug: "gameboy",
     description:
-      "The original Game Boy was Nintendo’s first handheld console and became a cultural icon. Everyone loves Game Boy. Packing a huge amount of power into a tiny package, this little console proved a revolution in videogaming when it launched in Japan in 1989. Since then, this pocket-sized system has sold over 100 million units, giving gamers all over the world the freedom to play their favourite games - including Tetris, Super Mario and Pokémon - no matter where they are.",
+      "The original Game Boy was Nintendo’s first handheld console and became a cultural icon. Everyone loves Game Boy. Packing a huge amount of power into a tiny package, this little console proved a revolution in videogaming when it launched in Japan in 1989. Since then, this pocket-sized system has sold over 100 million units...",
     images: [
       "/ConsolesPage/Gameboy_1.jpg",
       "/ConsolesPage/Gameboy_2.jpg",
@@ -125,22 +134,8 @@ export const consoles = [
       "/ConsolesPage/Gameboy_4.jpg",
       "/ConsolesPage/Gameboy_5.jpg",
     ],
-    spec: ` -CPU: 6502 8-bit (Similar to the Z80 processor)
-          -Main RAM: 64 k-bit(8kb)
-           -Video RAM: 8kb Screen Size: 2.6"
-          
-          -Resolution: 160x144 (20x18 tiles)
-           -Colors Available: 4 shades Colors on screen: 4 shades Max
-          sprites: 40 Max sprites per line: 10 Max Sprite Size: 8x16 Min sprite
-          size: 8x8
-          -Clock Speed: 4.194304 MHz (4.295454 MHz for Super GB)
-          Horizontal Sync: 9198 KHz (9420 KHz for Super GB) Vertical Sync: 59.73
-          Hz (61.17 Hz for Super GB)
-           -Sound: 4 channels with stereo sound Power: DC6V 0.7 - 4 AA
-          batteries DC3V 0.7W - 2 AAA batteries (Game Boy Pocket)
-          Dimensions: 148 x 89 x 32 mm 124 x 76 x 23 mm (Game Boy Pocket) Weight
-          (With batteries): 394 g 148 g (Game Boy Pocket)
-           -Min/Max Cart Size: 256 Kbit - 4 Mbit`,
+    spec: "...",
+    isBacklog: false,
   },
   {
     name: "Gameboy Color",
@@ -155,10 +150,8 @@ export const consoles = [
       "/ConsolesPage/GameboyColor_4.jpg",
       "/ConsolesPage/GameboyColor_5.jpg",
     ],
-    spec: `Screen: 2.0-inch color TFT LCD, capable of displaying up to 32,768 colors.
-CPU: Custom 8-bit CPU running at 4.19 MHz, which is twice as fast as the original Game Boy.
-Memory: 32 KB of RAM, which is four times the memory of the original Game Boy.
-Backward Compatibility: Compatible with original Game Boy games."`,
+    spec: "...",
+    isBacklog: false,
   },
   {
     name: "Gameboy Advance",
@@ -173,21 +166,8 @@ Backward Compatibility: Compatible with original Game Boy games."`,
       "/ConsolesPage/GameboyAdvance_4.jpg",
       "/ConsolesPage/GameboyAdvance_5.jpg",
     ],
-    spec: `High-resolution TFT screen with switchable lighting
-Screen size: 40.8mm x 61.2mm
-Displayable colors: 240 x 160 pixels
-Game Paks interchangeable
-Volume control provided
-Headphone connection available via dialogue cable port adapter (available separately)
-Released in February 2003
-Ran an ARM7 CPU with a Z80 co-processor
-Compatible with all Game Boy and Game Boy Color cartridges
-Physical size when closed: 8.4 × 8.2 × 2.44 cm
-Weight: 142 grams
-Reflective TFT color LCD screen
-Frontlight integrated LCD
-Rechargeable lithium-ion battery
-Battery life: 10 hours (light on), 18 hours (light off)`,
+    spec: "...",
+    isBacklog: false,
   },
   {
     name: "Nintendo DS",
@@ -203,6 +183,7 @@ Battery life: 10 hours (light on), 18 hours (light off)`,
       "/ConsolesPage/NintendoDS_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Nintendo Wii",
@@ -218,6 +199,7 @@ Battery life: 10 hours (light on), 18 hours (light off)`,
       "/ConsolesPage/NintendoWii_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Nintendo DS Lite",
@@ -233,6 +215,7 @@ Battery life: 10 hours (light on), 18 hours (light off)`,
       "/ConsolesPage/NintendoDSLite_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Nintendo 3DS",
@@ -248,6 +231,7 @@ Battery life: 10 hours (light on), 18 hours (light off)`,
       "/ConsolesPage/Nintendo3DS_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
   },
   {
     name: "Xbox Series S",
@@ -263,5 +247,53 @@ Battery life: 10 hours (light on), 18 hours (light off)`,
       "/ConsolesPage/XboxSeriesS_5.jpg",
     ],
     spec: "",
+    isBacklog: false,
+  },
+
+  // Merged from consoleBackOrder
+  {
+    name: "Xbox One",
+    img: "/ConsolesPage/XboxOne.jpg",
+    slug: "xbox-one",
+    description: "",
+    images: [],
+    spec: "",
+    isBacklog: true,
+  },
+  {
+    name: "SNES",
+    img: "/ConsolesPage/SNES.jpg",
+    slug: "snes",
+    description: "",
+    images: [],
+    spec: "",
+    isBacklog: true,
+  },
+  {
+    name: "Nintendo 64",
+    img: "/ConsolesPage/N64.jpg",
+    slug: "nintendo-64",
+    description: "",
+    images: [],
+    spec: "",
+    isBacklog: true,
+  },
+  {
+    name: "Gameboy Advance SP",
+    img: "/ConsolesPage/GameboyAdvanceSP.jpg",
+    slug: "gameboy-advance-sp",
+    description: "",
+    images: [],
+    spec: "",
+    isBacklog: true,
+  },
+  {
+    name: "Game and Watch",
+    img: "/ConsolesPage/GameAndWatch.jpg",
+    slug: "game-and-watch",
+    description: "",
+    images: [],
+    spec: "",
+    isBacklog: true,
   },
 ];
