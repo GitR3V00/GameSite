@@ -1,17 +1,8 @@
 import React from "react";
-import { consoles } from "../consoleArrays";
+import { consoles, Console } from "../consoleArrays";
 import { notFound } from "next/navigation";
 
 import ClientConsole from "./Clientconsole";
-
-export type ConsoleType = {
-  name: string;
-  img: string;
-  slug: string;
-  description: string;
-  images: string[];
-  spec: string;
-};
 
 type Props = {
   params: {
@@ -23,7 +14,7 @@ const ConsolePage = async ({ params }: Props) => {
   const { console: slug } = await params;
 
   const consoleData = consoles.find(
-    (console): console is ConsoleType => console.slug === slug
+    (console): console is Console => console.slug === slug
   );
 
   if (!consoleData) {

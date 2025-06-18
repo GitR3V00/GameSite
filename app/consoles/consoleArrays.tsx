@@ -6,6 +6,7 @@ export type Console = {
   images: string[];
   spec: string;
   isBacklog: boolean;
+  Price: string;
 };
 
 export const consoles: Console[] = [
@@ -22,8 +23,20 @@ export const consoles: Console[] = [
       "/ConsolesPage/Playstation5_4.jpg",
       "/ConsolesPage/Playstation5_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: 8-core AMD Zen 2 @ up to 3.5 GHz  
+• **GPU**: Custom AMD RDNA 2, 36 CUs @ up to 2.23 GHz (~10.28 TFLOPS), hardware ray tracing  
+• **RAM**: 16 GB GDDR6 @ 256-bit, 448 GB/s  
+• **Storage**: 825 GB custom NVMe SSD (~5.5 GB/s raw; ~8–9 GB/s compressed); expandable via M.2  
+• **Optical Drive**: 4K UHD Blu-ray  
+• **Audio**: Tempest 3D Audio Engine  
+• **Video Output**: HDMI 2.1 (up to 8K, 4K/120 Hz, VRR)  
+• **Connectivity**: USB-A/C, Ethernet, Wi‑Fi 6, Bluetooth 5.1  
+• **Dimensions**: ~390 × 104 × 260 mm; Weight ~4.5 kg  
+• **Power**: Internal PSU (350 W); liquid-metal cooling + dual 120 mm fan
+`,
     isBacklog: false,
+    Price: "£449.99",
   },
   {
     name: "Xbox Series X",
@@ -38,8 +51,19 @@ export const consoles: Console[] = [
       "/ConsolesPage/XboxSeriesX_4.jpg",
       "/ConsolesPage/XboxSeriesX_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: 8-core Custom AMD Zen 2 @ 3.8 GHz (3.6 GHz w/ SMT)  
+• **GPU**: Custom AMD RDNA 2, 52 CUs @ 1.825 GHz (~12 TFLOPS)  
+• **RAM**: 16 GB GDDR6 (10 GB @ 560 GB/s, 6 GB @ 336 GB/s)  
+• **Storage**: 1 TB Custom NVMe SSD (~2.4 GB/s raw; ~4.8 GB/s compressed); expandable via proprietary card  
+• **Optical Drive**: 4K UHD Blu-ray  
+• **Video Output**: HDMI 2.1 (4K/120 Hz, 8K, VRR)  
+• **Connectivity**: USB 3.1, Ethernet, Wi‑Fi 5, Bluetooth  
+• **Dimensions**: ~301 × 151 × 151 mm; Weight ~4.45 kg  
+• **Power**: Internal PSU
+`,
     isBacklog: false,
+    Price: "£429.99",
   },
   {
     name: "Gamecube",
@@ -54,8 +78,19 @@ export const consoles: Console[] = [
       "/ConsolesPage/Gamecube_4.jpg",
       "/ConsolesPage/Gamecube_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: IBM PowerPC “Gekko” @ 485 MHz  
+• **GPU**: ATI/Nintendo “Flipper” @ 162 MHz  
+• **RAM**: 24 MB 1T-SRAM + 16 MB DRAM (~40 MB total)  
+• **Storage**: Proprietary 1.5 GB mini‑DVD disc  
+• **Video**: Up to 480p (NTSC)/576i (PAL)  
+• **Audio**: Stereo analog out  
+• **I/O**: 4 controller ports, 2 memory card slots  
+• **Dimensions**: ~150 × 110 × 161 mm; Weight ~2.4 kg  
+• **Power**: DC 12 V @ 3.25 A
+`,
     isBacklog: false,
+    Price: "£79.99",
   },
   {
     name: "Playstation 1",
@@ -70,8 +105,18 @@ export const consoles: Console[] = [
       "/ConsolesPage/Playstation1_4.jpg",
       "/ConsolesPage/Playstation1_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: 32-bit RISC MIPS R3000A-compatible @ 33 MHz  
+• **GPU**: Custom Sony GPU up to 1.5 M polygons/sec  
+• **RAM**: 2 MB main; 1 MB VRAM  
+• **Storage**: CD-ROM (up to 700 MB)  
+• **Audio**: 24-channel ADPCM audio  
+• **Video Output**: Composite, S-Video, RGB SCART  
+• **Dimensions**: ~260 × 32 × 190 mm; Weight ~1.5 kg  
+• **Power**: PCA internal PSU (AC input)
+`,
     isBacklog: false,
+    Price: "£49.99",
   },
   {
     name: "Playstation 2",
@@ -86,24 +131,18 @@ export const consoles: Console[] = [
       "/ConsolesPage/Playstation2_4.jpg",
       "/ConsolesPage/Playstation2_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: Emotion Engine (MIPS III RISC) @ 294 MHz  
+• **GPU**: Graphics Synthesizer @ 147 MHz (150 MHz in later models)  
+• **RAM**: 32 MB RDRAM @ 3.2 GB/s  
+• **Storage**: DVD-ROM; optional HDD accessory  
+• **Audio**: SPU2, up to 48 channels  
+• **Video Output**: Composite, S-Video, Component, VGA, RGB  
+• **Dimensions**: ~301 × 78 × 182 mm; Weight ~2.2 kg (original)  
+• **Power**: ~45–90 W depending on model
+`,
     isBacklog: false,
-  },
-  {
-    name: "Xbox 360",
-    img: "/ConsolesPage/Xbox360.jpg",
-    slug: "xbox-360",
-    description:
-      "The Xbox 360 brought HD gaming to the masses and is known for hits like Halo 3, Gears of War, and robust online multiplayer.",
-    images: [
-      "/ConsolesPage/Xbox360_1.jpg",
-      "/ConsolesPage/Xbox360_2.jpg",
-      "/ConsolesPage/Xbox360_3.jpg",
-      "/ConsolesPage/Xbox360_4.jpg",
-      "/ConsolesPage/Xbox360_5.jpg",
-    ],
-    spec: "",
-    isBacklog: false,
+    Price: "£69.99",
   },
   {
     name: "Playstation 3",
@@ -118,15 +157,52 @@ export const consoles: Console[] = [
       "/ConsolesPage/Playstation3_4.jpg",
       "/ConsolesPage/Playstation3_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: Cell Broadband Engine (1 PPE + 7 SPE) @ 3.2 GHz  
+• **GPU**: NVIDIA RSX “Reality Synthesizer” @ 550 MHz  
+• **RAM**: 256 MB XDR main, 256 MB GDDR3 VRAM  
+• **Storage**: 20–60 GB (fat), 120–500 GB (Slim & Super Slim) HDD  
+• **Optical**: Blu-ray/DVD/CD drive  
+• **Audio/Video Output**: HDMI 1.3a, AV Multi-out (Composite, Component, S-Video)  
+• **Dimensions**: Fat: ~325 × 98 × 274 mm; Weight ~5 kg  
+• **Power**: 250 W (original); ~200 W (Slim)
+`,
     isBacklog: false,
+    Price: "£89.99",
+  },
+  {
+    name: "Xbox 360",
+    img: "/ConsolesPage/Xbox360.jpg",
+    slug: "xbox-360",
+    description:
+      "The Xbox 360 brought HD gaming to the masses and is known for hits like Halo 3, Gears of War, and robust online multiplayer.",
+    images: [
+      "/ConsolesPage/Xbox360_1.jpg",
+      "/ConsolesPage/Xbox360_2.jpg",
+      "/ConsolesPage/Xbox360_3.jpg",
+      "/ConsolesPage/Xbox360_4.jpg",
+      "/ConsolesPage/Xbox360_5.jpg",
+    ],
+    spec: `
+• **CPU**: Triple-core Xenon @ 3.2 GHz  
+• **GPU**: ATI Xenos @ 500 MHz (10 MB eDRAM)  
+• **RAM**: 512 MB GDDR3 + 10 MB eDRAM  
+• **Storage**: 20–250 GB HDD (removable); external USB 2.0 support  
+• **Optical**: DVD-ROM + optional HD DVD add-on  
+• **Video Output**: HDMI 1.2a, Component, Composite, VGA  
+• **Connectivity**: Ethernet, Wi‑Fi (built-in on later models), USB ports  
+• **Dimensions**: Original: ~310 × 79 × 246 mm; Weight ~3.2 kg  
+• **Power**: 150–175 W
+`,
+    isBacklog: false,
+    Price: "£59.99",
   },
   {
     name: "Gameboy",
     img: "/ConsolesPage/Gameboy.png",
     slug: "gameboy",
     description:
-      "The original Game Boy was Nintendo’s first handheld console and became a cultural icon. Everyone loves Game Boy. Packing a huge amount of power into a tiny package, this little console proved a revolution in videogaming when it launched in Japan in 1989. Since then, this pocket-sized system has sold over 100 million units...",
+      "The original Game Boy was Nintendo’s first handheld console and became a cultural icon. Everyone loves Game Boy. Packing a huge amount of power into a tiny package…",
     images: [
       "/ConsolesPage/Gameboy_1.jpg",
       "/ConsolesPage/Gameboy_2.jpg",
@@ -134,8 +210,17 @@ export const consoles: Console[] = [
       "/ConsolesPage/Gameboy_4.jpg",
       "/ConsolesPage/Gameboy_5.jpg",
     ],
-    spec: "...",
+    spec: `
+• **CPU**: Custom 8-bit Sharp LR35902 @ ~4.19 MHz  
+• **RAM**: 8 KB internal, 8 KB video RAM  
+• **Display**: 160 × 144 px gray‑green LCD  
+• **Sound**: 4-channel PCM audio  
+• **Storage**: ROM cartridges (32 KB–8 MB)  
+• **Power**: 4× AA batteries (~15 h life); ~0.7 W  
+• **Dimensions**: ~90 × 32 × 144 mm; Weight ~220 g (with batteries)
+`,
     isBacklog: false,
+    Price: "£49.99",
   },
   {
     name: "Gameboy Color",
@@ -150,8 +235,17 @@ export const consoles: Console[] = [
       "/ConsolesPage/GameboyColor_4.jpg",
       "/ConsolesPage/GameboyColor_5.jpg",
     ],
-    spec: "...",
+    spec: `
+• **CPU**: Custom 8-bit Sharp LR35902 @ ~8 MHz  
+• **RAM**: 32 KB internal, 16 KB VRAM  
+• **Display**: 160×144 px color LCD (56 palette colors)  
+• **Sound**: 4-channel PCM  
+• **Storage**: ROM cartridges  
+• **Power**: 2× AA (~10 h life); ~0.6 W  
+• **Dimensions**: ~133 × 27 × 75 mm; Weight ~138 g
+`,
     isBacklog: false,
+    Price: "£59.99",
   },
   {
     name: "Gameboy Advance",
@@ -166,8 +260,17 @@ export const consoles: Console[] = [
       "/ConsolesPage/GameboyAdvance_4.jpg",
       "/ConsolesPage/GameboyAdvance_5.jpg",
     ],
-    spec: "...",
+    spec: `
+• **CPU**: 32-bit ARM7TDMI @ 16.78 MHz  
+• **RAM**: 32 KB + 256 KB VRAM  
+• **Display**: 240×160 px 32,768‑color LCD  
+• **Sound**: 2 Game Boy channels + 6 Direct Sound  
+• **Storage**: ROM cartridges  
+• **Power**: 2× AA (~15 h); ~0.5 W  
+• **Dimensions**: ~144 × 24 × 82 mm; Weight ~140 g
+`,
     isBacklog: false,
+    Price: "£69.99",
   },
   {
     name: "Nintendo DS",
@@ -182,8 +285,17 @@ export const consoles: Console[] = [
       "/ConsolesPage/NintendoDS_4.jpg",
       "/ConsolesPage/NintendoDS_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: Dual ARM CPUs (ARM9 @ 67 MHz + ARM7 @ 33 MHz)  
+• **RAM**: 4 MB 2T-SRAM  
+• **Display**: Dual 256×192 px TFT LCD (lower touchscreen)  
+• **Sound**: Stereo speakers, microphone  
+• **Storage**: Nintendo DS game cards (~8 MB–512 MB)  
+• **Battery**: Li-ion (15 h); 3.7 V, 1000 mAh  
+• **Dimensions**: ~148 × 28 × 73 mm; Weight ~275 g
+`,
     isBacklog: false,
+    Price: "£44.99",
   },
   {
     name: "Nintendo Wii",
@@ -198,8 +310,18 @@ export const consoles: Console[] = [
       "/ConsolesPage/NintendoWii_4.jpg",
       "/ConsolesPage/NintendoWii_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: IBM PowerPC "Broadway" @ 729 MHz  
+• **GPU**: ATI "Hollywood" @ 243 MHz  
+• **RAM**: 88 MB total (24 MB "ESRAM" + 64 MB GDDR3)  
+• **Storage**: 512 MB internal flash + SD expansion; disc-based  
+• **Video Output**: 480p (Component); composite/S-Video via adapter  
+• **Audio/Connectivity**: Stereo, Bluetooth, USB 2.0, Ethernet (in later models)  
+• **Dimensions**: ~44 × 157 × 215 mm (“vertical”); Weight ~1.4 kg  
+• **Power**: ~40 W
+`,
     isBacklog: false,
+    Price: "£49.99",
   },
   {
     name: "Nintendo DS Lite",
@@ -214,8 +336,16 @@ export const consoles: Console[] = [
       "/ConsolesPage/NintendoDSLite_4.jpg",
       "/ConsolesPage/NintendoDSLite_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: ARM9 @ 67 MHz + ARM7 @ 33 MHz  
+• **RAM**: 4 MB 2T‑SRAM  
+• **Display**: Dual 256×192 px TFT LCD (brighter)  
+• **Sound**: Stereo speakers, mic  
+• **Battery**: Li-ion (15 h max); 3.7 V, 1000–1300 mAh  
+• **Dimensions**: ~133 × 21 × 74 mm; Weight ~214 g
+`,
     isBacklog: false,
+    Price: "£49.99",
   },
   {
     name: "Nintendo 3DS",
@@ -230,8 +360,17 @@ export const consoles: Console[] = [
       "/ConsolesPage/Nintendo3DS_4.jpg",
       "/ConsolesPage/Nintendo3DS_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: Dual-core ARM11 @ 268 MHz + ARM9 @ 134 MHz  
+• **RAM**: 128 MB (shared) + 6 MB VRAM  
+• **Display**: Upper 800×240 px autostereoscopic 3D LCD; lower 320×240 px touchscreen  
+• **Storage**: 2 GB SD card included, up to 32 GB; cartridge-based game media  
+• **Battery**: Li-ion (~7–10 h non-3D, ~3–5 h 3D)  
+• **Connectivity**: Wi‑Fi, StreetPass/SpotPass, SD slot, AGB slot  
+• **Dimensions**: ~134 × 74 × 21 mm; Weight ~235 g
+`,
     isBacklog: false,
+    Price: "£89.99",
   },
   {
     name: "Xbox Series S",
@@ -246,11 +385,21 @@ export const consoles: Console[] = [
       "/ConsolesPage/XboxSeriesS_4.jpg",
       "/ConsolesPage/XboxSeriesS_5.jpg",
     ],
-    spec: "",
+    spec: `
+• **CPU**: 8-core Custom AMD Zen 2 @ 3.6 GHz (3.4 GHz w/ SMT)  
+• **GPU**: Custom AMD RDNA 2, 20 CUs @ 1.565 GHz (~4 TFLOPS)  
+• **RAM**: 10 GB GDDR6 (8 GB @ 224 GB/s, 2 GB @ 56 GB/s)  
+• **Storage**: 512 GB Custom NVMe SSD (~2.4 GB/s raw; ~4.8 GB/s compressed); expandable  
+• **Output**: HDMI 2.1 (1440p/120 Hz), upscaled 4K  
+• **Connectivity**: USB 3.1, Ethernet, Wi‑Fi 5, Bluetooth  
+• **Dimensions**: ~275 × 63 × 151 mm; Weight ~1.9 kg  
+• **Power**: Internal PSU
+`,
     isBacklog: false,
+    Price: "£250.99",
   },
 
-  // Merged from consoleBackOrder
+  // Backlog consoles (no specs)
   {
     name: "Xbox One",
     img: "/ConsolesPage/XboxOne.jpg",
@@ -259,6 +408,7 @@ export const consoles: Console[] = [
     images: [],
     spec: "",
     isBacklog: true,
+    Price: "£89.99",
   },
   {
     name: "SNES",
@@ -268,6 +418,7 @@ export const consoles: Console[] = [
     images: [],
     spec: "",
     isBacklog: true,
+    Price: "£89.99",
   },
   {
     name: "Nintendo 64",
@@ -277,6 +428,7 @@ export const consoles: Console[] = [
     images: [],
     spec: "",
     isBacklog: true,
+    Price: "£89.99",
   },
   {
     name: "Gameboy Advance SP",
@@ -286,6 +438,7 @@ export const consoles: Console[] = [
     images: [],
     spec: "",
     isBacklog: true,
+    Price: "£89.99",
   },
   {
     name: "Game and Watch",
@@ -295,5 +448,6 @@ export const consoles: Console[] = [
     images: [],
     spec: "",
     isBacklog: true,
+    Price: "£89.99",
   },
 ];

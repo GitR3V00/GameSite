@@ -2,13 +2,20 @@
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./carouselOverrides.css";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { consoles } from "./consoleArrays";
+import Modal from "../Components/Modal/Modal";
+import { Product } from "../Components/Modal/Modal";
 
 const Consoles = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  useEffect(() => {}, [openModal]);
+
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
@@ -61,6 +68,19 @@ const Consoles = () => {
             </div>
           ))}
       </div>
+      {/*Modal For Back-Order Consoles*/}
+
+      {openModal && selectedProduct && (
+        <Modal
+          product={selectedProduct}
+          onClose={() => {
+            setOpenModal(false);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
+
+      {/*Backlog section*/}
 
       <div className="mt-20 border-t pt-10">
         <div className="max-w-screen-xl mx-auto px-4">
@@ -81,9 +101,12 @@ const Consoles = () => {
               containerClass="carousel-container"
               itemClass="px-4 justify-center"
             >
-              {/*Backlog section*/}
               {filteredBacklogConsoles.map((console) => (
                 <div
+                  onClick={() => {
+                    setSelectedProduct(console);
+                    setOpenModal(true);
+                  }}
                   key={console.name}
                   className="w-full max-w-[350px] mx-auto flex flex-col justify-center bg-gray-500/85 rounded-lg p-4 cursor-pointer transition-all duration-200 hover:scale-105 hover:bg-gray-600/85"
                 >

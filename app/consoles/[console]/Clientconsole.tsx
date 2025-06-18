@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ConsoleType } from "./page";
+import { Console } from "../consoleArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
 
 type Props = {
-  consoleData: ConsoleType;
+  consoleData: Console;
 };
 
 const ClientConsole = ({ consoleData }: Props) => {
