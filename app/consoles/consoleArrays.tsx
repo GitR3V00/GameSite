@@ -219,7 +219,7 @@ export const consoles: Console[] = [
 • **Power**: 4× AA batteries (~15 h life); ~0.7 W  
 • **Dimensions**: ~90 × 32 × 144 mm; Weight ~220 g (with batteries)
 `,
-    isBacklog: false,
+    isBacklog: true,
     Price: "£49.99",
   },
   {
