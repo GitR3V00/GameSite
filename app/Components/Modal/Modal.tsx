@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Console } from "@/app/consoles/consoleArrays";
 import { Game } from "@/app/games/GameArrays";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa";
 
 export type Product = Console | Game;
 
@@ -56,6 +57,17 @@ const Modal: React.FC<ModalProps> = ({ product, onClose }) => {
         <h1 className="text-black font-bold mb-2">Product Description:</h1>
         <p className="text-black">{product.description}</p>
         <p className="mt-2 font-bold text-black">{product.Price}</p>
+        <button
+          className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
+                    transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+        >
+          Add To Basket as Backorder
+          <FaArrowRight />
+        </button>
+        <p className="font-semibold text-[12px] mt-2 text-gray-400">
+          *If a product is purchased as Backorder this will take longer to ship
+          and deliver*
+        </p>
       </div>
     </div>
   );

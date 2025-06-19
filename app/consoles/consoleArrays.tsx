@@ -451,3 +451,11 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
 ];
+
+export const availableConsoles = consoles.filter(
+  (console) => console.isBacklog === false
+);
+
+export const filteredBacklogConsoles = consoles.filter(
+  (console) => console.isBacklog === true
+);

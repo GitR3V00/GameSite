@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaGamepad, FaShoppingBasket } from "react-icons/fa";
+import { FaGamepad, FaHeart, FaShoppingBasket } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
 type NavProps = {
@@ -54,6 +54,7 @@ const Navbar = () => {
             Contact Us
           </button>
           <FaShoppingBasket className="w-8 h-8 cursor-pointer" />
+          <FaHeart className="cursor-pointer w-7 h-7" />
         </div>
       </div>
     </div>

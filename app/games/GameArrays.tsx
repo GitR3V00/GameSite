@@ -7,7 +7,10 @@ export type Game = {
   Price: string;
   isBacklog: boolean;
   releaseYear: number;
+  platform: Platform[];
 };
+
+export type Platform = "Playstation" | "Xbox" | "Nintendo" | "PC";
 
 export const gameArray: Game[] = [
   {
@@ -24,6 +27,7 @@ export const gameArray: Game[] = [
     Price: "£49.99",
     isBacklog: false,
     releaseYear: 2023,
+    platform: ["Nintendo"],
   },
   {
     name: "Elden Ring",
@@ -39,6 +43,7 @@ export const gameArray: Game[] = [
     Price: "£44.99",
     isBacklog: true,
     releaseYear: 2022,
+    platform: ["PC", "Playstation", "Xbox"],
   },
   {
     name: "God of War Ragnarök",
@@ -54,6 +59,7 @@ export const gameArray: Game[] = [
     Price: "£59.99",
     isBacklog: false,
     releaseYear: 2022,
+    platform: ["Playstation"],
   },
   {
     name: "Starfield",
@@ -69,6 +75,7 @@ export const gameArray: Game[] = [
     Price: "£69.99",
     isBacklog: true,
     releaseYear: 2023,
+    platform: ["PC", "Xbox"],
   },
   {
     name: "Resident Evil 4 Remake",
@@ -84,6 +91,7 @@ export const gameArray: Game[] = [
     Price: "£54.99",
     isBacklog: false,
     releaseYear: 2023,
+    platform: ["PC", "Xbox"],
   },
   {
     name: "Marvel’s Spider-Man 2",
@@ -99,6 +107,7 @@ export const gameArray: Game[] = [
     Price: "£69.99",
     isBacklog: false,
     releaseYear: 2023,
+    platform: ["Playstation", "PC"],
   },
   {
     name: "Final Fantasy XVI",
@@ -114,6 +123,7 @@ export const gameArray: Game[] = [
     Price: "£64.99",
     isBacklog: true,
     releaseYear: 2023,
+    platform: ["Playstation"],
   },
   {
     name: "Hogwarts Legacy",
@@ -129,6 +139,7 @@ export const gameArray: Game[] = [
     Price: "£59.99",
     isBacklog: false,
     releaseYear: 2023,
+    platform: ["PC", "Playstation", "Xbox"],
   },
   {
     name: "Baldur’s Gate 3",
@@ -144,6 +155,7 @@ export const gameArray: Game[] = [
     Price: "£49.99",
     isBacklog: true,
     releaseYear: 2023,
+    platform: ["PC"],
   },
   {
     name: "Super Mario Bros. Wonder",
@@ -159,5 +171,6 @@ export const gameArray: Game[] = [
     Price: "£49.99",
     isBacklog: false,
     releaseYear: 2023,
+    platform: ["Nintendo"],
   },
 ];

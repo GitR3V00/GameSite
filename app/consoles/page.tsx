@@ -2,19 +2,18 @@
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./carouselOverrides.css";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { consoles } from "./consoleArrays";
+import { availableConsoles, filteredBacklogConsoles } from "./consoleArrays";
 import Modal from "../Components/Modal/Modal";
 import { Product } from "../Components/Modal/Modal";
+import Link from "next/link";
 
 const Consoles = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
-  useEffect(() => {}, [openModal]);
 
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
@@ -27,14 +26,6 @@ const Consoles = () => {
   const handleClick = (slug: string) => {
     router.push(`/consoles/${slug}`);
   };
-
-  const availableConsoles = consoles.filter(
-    (console) => console.isBacklog === false
-  );
-
-  const filteredBacklogConsoles = consoles.filter(
-    (console) => console.isBacklog === true
-  );
 
   return (
     <div className="mt-32">
@@ -125,10 +116,12 @@ const Consoles = () => {
             </Carousel>
           </div>
           <div className="flex justify-center">
-            <button className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[400px] mt-4 cursor-pointer hover:scale-105 hover:bg-gray-700/85">
-              All Consoles Available for Back-Order
-              <FaArrowRight />
-            </button>
+            <Link href={"http://localhost:3000/consoles/backorder"}>
+              <button className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[400px] mt-4 cursor-pointer hover:scale-105 hover:bg-gray-700/85">
+                All Consoles Available for Back-Order
+                <FaArrowRight />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
