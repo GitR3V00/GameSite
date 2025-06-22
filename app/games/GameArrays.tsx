@@ -10,7 +10,7 @@ export type Game = {
   platform: Platform[];
 };
 
-export type Platform = "Playstation" | "Xbox" | "Nintendo" | "PC";
+export type Platform = "All" | "Playstation" | "Xbox" | "Nintendo" | "PC";
 
 export const gameArray: Game[] = [
   {
@@ -174,3 +174,12 @@ export const gameArray: Game[] = [
     platform: ["Nintendo"],
   },
 ];
+
+export const pc = gameArray.filter((game) => game.platform.includes("PC"));
+export const nintendo = gameArray.filter((game) =>
+  game.platform.includes("Nintendo")
+);
+export const playstation = gameArray.filter((game) =>
+  game.platform.includes("Playstation")
+);
+export const xbox = gameArray.filter((game) => game.platform.includes("Xbox"));
