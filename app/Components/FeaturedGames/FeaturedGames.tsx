@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -73,15 +74,18 @@ const FeaturedGames = () => {
               </div>
             ))}
           </div>
+
           <div
             className="h-[550px] w-[550px] rounded-lg bg-gray-300 flex items-center justify-center
               transition-all duration-200 hover:scale-105 text-2xl p-2 text-black font-medium cursor-pointer
               "
           >
-            <h1>
-              Browse All
-              <FaArrowRight className="h-4 w-4" />
-            </h1>
+            <Link href={"/games"}>
+              <h1>
+                Browse All
+                <FaArrowRight className="h-4 w-4" />
+              </h1>
+            </Link>
           </div>
         </div>
       </div>

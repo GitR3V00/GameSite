@@ -18,7 +18,8 @@ const Games = () => {
   const router = useRouter();
 
   const handleClick = (slug: string) => {
-    router.push(`/games/${slug}`);
+    const url = `/games/${slug}?platform=${activePlatform}`;
+    router.push(url);
   };
 
   const handlePlatformClick = (platform: string) => {

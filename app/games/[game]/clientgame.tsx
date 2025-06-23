@@ -4,13 +4,18 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Game } from "../GameArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
+import { useSearchParams } from "next/navigation";
 
 type Props = {
   gameData: Game;
 };
 
 const ClientGame = ({ gameData }: Props) => {
+  const searchParams = useSearchParams(); // ✅ read query params
+  const initialPlatform = searchParams.get("platform") ?? "";
   const [selectedImg, setSelectedImg] = useState(0);
+  const [selectedPlatform, setSelectedPlatform] =
+    useState<string>(initialPlatform);
 
   return (
     <div className="flex gap-5">
@@ -63,6 +68,22 @@ const ClientGame = ({ gameData }: Props) => {
               Add To WishList
               <FaHeart />
             </button>
+          </div>
+          <div className="flex gap-2 text-center justify-center">
+            {gameData.platform.map((platform) => (
+              <div key={platform}>
+                <button
+                  onClick={() => setSelectedPlatform(platform)}
+                  className={`p-2 rounded-lg mt-10 cursor-pointer transition-all duration-200 hover:scale-105 ${
+                    platform === selectedPlatform
+                      ? "bg-gray-300 border-1 border-gray-500"
+                      : "bg-gray-500 hover:bg-gray-400"
+                  }`}
+                >
+                  {platform}
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
