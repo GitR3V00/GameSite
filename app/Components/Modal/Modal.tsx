@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Console } from "@/app/consoles/consoleArrays";
-import { Game } from "@/app/games/GameArrays";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
-export type Product = Console | Game;
+import { Product } from "../Product/Products";
 
 interface ModalProps {
   product: Product;
@@ -26,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ product, onClose }) => {
         <h1 className="text-2xl font-bold mb-4 text-black">{product.name}</h1>
         <div className="flex gap-2">
           <div className="flex-row">
-            {product.images.slice(0, 5).map((src, index) => (
+            {product.images.slice(0, 5).map((src: string, index: number) => (
               <div
                 key={index}
                 className="w-20 h-20 mb-4"

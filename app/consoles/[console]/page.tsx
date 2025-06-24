@@ -1,7 +1,6 @@
 import React from "react";
 import { consoles, Console } from "../consoleArrays";
 import { notFound } from "next/navigation";
-
 import ClientConsole from "./Clientconsole";
 
 type Props = {

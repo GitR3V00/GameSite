@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Console } from "../consoleArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
+import { Product } from "@/app/Components/Product/Products";
 
 type Props = {
   consoleData: Console;
@@ -11,6 +12,33 @@ type Props = {
 
 const ClientConsole = ({ consoleData }: Props) => {
   const [selectedImg, setSelectedImg] = useState(0);
+  const [consoleWishlist, setConsoleWishlist] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const storedWishlist = localStorage.getItem("ConsoleWishlist");
+    if (storedWishlist) {
+      setConsoleWishlist(JSON.parse(storedWishlist));
+    }
+  }, []);
+
+  useEffect(() => {
+    const wishlistString = JSON.stringify(consoleWishlist);
+    localStorage.setItem("ConsoleWishlist", wishlistString);
+  }, [consoleWishlist]);
+
+  const isInWishlist = consoleWishlist.some(
+    (item) => item.id === consoleData.id
+  );
+
+  const toggleWishlist = () => {
+    if (isInWishlist) {
+      setConsoleWishlist(
+        consoleWishlist.filter((item) => item.id !== consoleData.id)
+      );
+    } else {
+      setConsoleWishlist([...consoleWishlist, consoleData]);
+    }
+  };
 
   return (
     <div className="flex gap-5">
@@ -57,8 +85,9 @@ const ClientConsole = ({ consoleData }: Props) => {
           </div>
           <div className="flex justify-center">
             <button
+              onClick={toggleWishlist}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
-            transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+                        transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
               Add To WishList
               <FaHeart />

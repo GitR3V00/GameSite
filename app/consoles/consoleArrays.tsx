@@ -1,4 +1,5 @@
 export type Console = {
+  readonly id: number;
   name: string;
   img: string;
   slug: string;
@@ -11,6 +12,7 @@ export type Console = {
 
 export const consoles: Console[] = [
   {
+    id: 11,
     name: "Playstation 5",
     img: "/ConsolesPage/Playstation5Console.jpg",
     slug: "playstation-5",
@@ -39,6 +41,7 @@ export const consoles: Console[] = [
     Price: "£449.99",
   },
   {
+    id: 12,
     name: "Xbox Series X",
     img: "/ConsolesPage/XboxSeriesXConsole.jpg",
     slug: "xbox-series-x",
@@ -66,6 +69,7 @@ export const consoles: Console[] = [
     Price: "£429.99",
   },
   {
+    id: 13,
     name: "Gamecube",
     img: "/ConsolesPage/GamecubeConsole.jpg",
     slug: "gamecube",
@@ -93,6 +97,7 @@ export const consoles: Console[] = [
     Price: "£79.99",
   },
   {
+    id: 14,
     name: "Playstation 1",
     img: "/ConsolesPage/Playstation1Console.png",
     slug: "playstation-1",
@@ -119,6 +124,7 @@ export const consoles: Console[] = [
     Price: "£49.99",
   },
   {
+    id: 15,
     name: "Playstation 2",
     img: "/ConsolesPage/Playstation2Console.jpg",
     slug: "playstation-2",
@@ -145,6 +151,7 @@ export const consoles: Console[] = [
     Price: "£69.99",
   },
   {
+    id: 16,
     name: "Playstation 3",
     img: "/ConsolesPage/Playstation3Console.jpg",
     slug: "playstation-3",
@@ -171,6 +178,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 17,
     name: "Xbox 360",
     img: "/ConsolesPage/Xbox360.jpg",
     slug: "xbox-360",
@@ -198,6 +206,7 @@ export const consoles: Console[] = [
     Price: "£59.99",
   },
   {
+    id: 18,
     name: "Gameboy",
     img: "/ConsolesPage/Gameboy.png",
     slug: "gameboy",
@@ -223,6 +232,7 @@ export const consoles: Console[] = [
     Price: "£49.99",
   },
   {
+    id: 19,
     name: "Gameboy Color",
     img: "/ConsolesPage/GameboyColor.png",
     slug: "gameboy-color",
@@ -248,6 +258,7 @@ export const consoles: Console[] = [
     Price: "£59.99",
   },
   {
+    id: 20,
     name: "Gameboy Advance",
     img: "/ConsolesPage/GameboyAdvance.jpg",
     slug: "gameboy-advance",
@@ -273,6 +284,7 @@ export const consoles: Console[] = [
     Price: "£69.99",
   },
   {
+    id: 21,
     name: "Nintendo DS",
     img: "/ConsolesPage/NintendoDS.jpg",
     slug: "nintendo-ds",
@@ -298,6 +310,7 @@ export const consoles: Console[] = [
     Price: "£44.99",
   },
   {
+    id: 22,
     name: "Nintendo Wii",
     img: "/ConsolesPage/NintendoWii.jpg",
     slug: "nintendo-wii",
@@ -324,6 +337,7 @@ export const consoles: Console[] = [
     Price: "£49.99",
   },
   {
+    id: 23,
     name: "Nintendo DS Lite",
     img: "/ConsolesPage/NintendoDSLite.jpg",
     slug: "nintendo-ds-lite",
@@ -348,6 +362,7 @@ export const consoles: Console[] = [
     Price: "£49.99",
   },
   {
+    id: 24,
     name: "Nintendo 3DS",
     img: "/ConsolesPage/Nintendo3DS.jpg",
     slug: "nintendo-3ds",
@@ -373,6 +388,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 25,
     name: "Xbox Series S",
     img: "/ConsolesPage/XboxOneS.jpg",
     slug: "xbox-series-s",
@@ -401,6 +417,7 @@ export const consoles: Console[] = [
 
   // Backlog consoles (no specs)
   {
+    id: 26,
     name: "Xbox One",
     img: "/ConsolesPage/XboxOne.jpg",
     slug: "xbox-one",
@@ -411,6 +428,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 27,
     name: "SNES",
     img: "/ConsolesPage/SNES.jpg",
     slug: "snes",
@@ -421,6 +439,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 28,
     name: "Nintendo 64",
     img: "/ConsolesPage/N64.jpg",
     slug: "nintendo-64",
@@ -431,6 +450,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 29,
     name: "Gameboy Advance SP",
     img: "/ConsolesPage/GameboyAdvanceSP.jpg",
     slug: "gameboy-advance-sp",
@@ -441,6 +461,7 @@ export const consoles: Console[] = [
     Price: "£89.99",
   },
   {
+    id: 30,
     name: "Game and Watch",
     img: "/ConsolesPage/GameAndWatch.jpg",
     slug: "game-and-watch",

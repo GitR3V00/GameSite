@@ -1,4 +1,5 @@
 export type Game = {
+  readonly id: number;
   name: string;
   img: string;
   slug: string;
@@ -14,6 +15,7 @@ export type Platform = "All" | "Playstation" | "Xbox" | "Nintendo" | "PC";
 
 export const gameArray: Game[] = [
   {
+    id: 1,
     name: "The Legend of Zelda: Tears of the Kingdom",
     img: "/GamesPage/ZeldaTearsOfTheKingdom.jpg",
     slug: "zelda-tears-of-the-kingdom",
@@ -30,6 +32,7 @@ export const gameArray: Game[] = [
     platform: ["Nintendo"],
   },
   {
+    id: 2,
     name: "Elden Ring",
     img: "/GamesPage/EldenRing.jpg",
     slug: "elden-ring",
@@ -46,6 +49,7 @@ export const gameArray: Game[] = [
     platform: ["PC", "Playstation", "Xbox"],
   },
   {
+    id: 3,
     name: "God of War Ragnarök",
     img: "/GamesPage/GodOfWarRagnarok.jpg",
     slug: "god-of-war-ragnarok",
@@ -62,6 +66,7 @@ export const gameArray: Game[] = [
     platform: ["Playstation"],
   },
   {
+    id: 4,
     name: "Starfield",
     img: "/GamesPage/Starfield.jpg",
     slug: "starfield",
@@ -78,6 +83,7 @@ export const gameArray: Game[] = [
     platform: ["PC", "Xbox"],
   },
   {
+    id: 5,
     name: "Resident Evil 4 Remake",
     img: "/GamesPage/ResidentEvil4Remake.jpg",
     slug: "resident-evil-4-remake",
@@ -94,6 +100,7 @@ export const gameArray: Game[] = [
     platform: ["PC", "Xbox"],
   },
   {
+    id: 6,
     name: "Marvel’s Spider-Man 2",
     img: "/GamesPage/SpiderMan2.jpg",
     slug: "spider-man-2",
@@ -110,6 +117,7 @@ export const gameArray: Game[] = [
     platform: ["Playstation", "PC"],
   },
   {
+    id: 7,
     name: "Final Fantasy XVI",
     img: "/GamesPage/FinalFantasyXVI.jpg",
     slug: "final-fantasy-xvi",
@@ -126,6 +134,7 @@ export const gameArray: Game[] = [
     platform: ["Playstation"],
   },
   {
+    id: 8,
     name: "Hogwarts Legacy",
     img: "/GamesPage/HogwartsLegacy.jpg",
     slug: "hogwarts-legacy",
@@ -142,6 +151,7 @@ export const gameArray: Game[] = [
     platform: ["PC", "Playstation", "Xbox"],
   },
   {
+    id: 9,
     name: "Baldur’s Gate 3",
     img: "/GamesPage/BaldursGate3.jpg",
     slug: "baldurs-gate-3",
@@ -158,6 +168,7 @@ export const gameArray: Game[] = [
     platform: ["PC"],
   },
   {
+    id: 10,
     name: "Super Mario Bros. Wonder",
     img: "/GamesPage/MarioWonder.jpg",
     slug: "mario-wonder",

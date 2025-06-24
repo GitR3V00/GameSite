@@ -1,21 +1,61 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Game } from "../GameArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
+import { Platform } from "../GameArrays";
 
 type Props = {
   gameData: Game;
 };
 
+type GameWishlistItem = {
+  game: Game;
+  selectedPlatform?: Platform | string;
+};
+
 const ClientGame = ({ gameData }: Props) => {
-  const searchParams = useSearchParams(); // ✅ read query params
+  const searchParams = useSearchParams();
   const initialPlatform = searchParams.get("platform") ?? "";
   const [selectedImg, setSelectedImg] = useState(0);
   const [selectedPlatform, setSelectedPlatform] =
     useState<string>(initialPlatform);
+
+  const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
+
+  const isInWishlist = gameWishlist.some(
+    (item) => item.game.id === gameData.id
+  );
+
+  const toggleWishlist = () => {
+    if (isInWishlist) {
+      setGameWishlist(
+        gameWishlist.filter((item) => item.game.id !== gameData.id)
+      );
+    } else {
+      setGameWishlist([
+        ...gameWishlist,
+        {
+          game: gameData,
+          ...(selectedPlatform && { selectedPlatform }),
+        },
+      ]);
+    }
+  };
+
+  useEffect(() => {
+    const storedWishlist = localStorage.getItem("GameWishlist");
+    if (storedWishlist) {
+      setGameWishlist(JSON.parse(storedWishlist));
+    }
+  }, []);
+
+  useEffect(() => {
+    const wishlistString = JSON.stringify(gameWishlist);
+    localStorage.setItem("GameWishlist", wishlistString);
+  }, [gameWishlist]);
 
   return (
     <div className="flex gap-5">
@@ -64,8 +104,9 @@ const ClientGame = ({ gameData }: Props) => {
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
             transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+              onClick={toggleWishlist}
             >
-              Add To WishList
+              {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
               <FaHeart />
             </button>
           </div>
