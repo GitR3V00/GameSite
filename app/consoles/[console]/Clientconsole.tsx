@@ -89,7 +89,7 @@ const ClientConsole = ({ consoleData }: Props) => {
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                         transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
-              Add To WishList
+              {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
               <FaHeart />
             </button>
           </div>
