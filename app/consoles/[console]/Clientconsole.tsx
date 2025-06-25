@@ -13,32 +13,45 @@ type Props = {
 const ClientConsole = ({ consoleData }: Props) => {
   const [selectedImg, setSelectedImg] = useState(0);
   const [consoleWishlist, setConsoleWishlist] = useState<Product[]>([]);
+  const [loadedFromStorage, setLoadedFromStorage] = useState(false);
 
-  useEffect(() => {
-    const storedWishlist = localStorage.getItem("ConsoleWishlist");
-    if (storedWishlist) {
-      setConsoleWishlist(JSON.parse(storedWishlist));
-    }
-  }, []);
-
-  useEffect(() => {
-    const wishlistString = JSON.stringify(consoleWishlist);
-    localStorage.setItem("ConsoleWishlist", wishlistString);
-  }, [consoleWishlist]);
+  
+  const updateWishlist = (
+    updater: (prev: Product[]) => Product[]
+  ) => {
+    setConsoleWishlist((prev) => {
+      const updated = updater(prev);
+      localStorage.setItem("ConsoleWishlist", JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   const isInWishlist = consoleWishlist.some(
     (item) => item.id === consoleData.id
   );
 
   const toggleWishlist = () => {
-    if (isInWishlist) {
-      setConsoleWishlist(
-        consoleWishlist.filter((item) => item.id !== consoleData.id)
-      );
-    } else {
-      setConsoleWishlist([...consoleWishlist, consoleData]);
-    }
+    updateWishlist((prev) => {
+      const exists = prev.some((item) => item.id === consoleData.id);
+      if (exists) {
+        return prev.filter((item) => item.id !== consoleData.id);
+      } else {
+        return [...prev, consoleData];
+      }
+    });
   };
+
+  useEffect(() => {
+    const stored = localStorage.getItem("ConsoleWishlist");
+    if (stored) {
+      try {
+        setConsoleWishlist(JSON.parse(stored));
+      } catch (e) {
+        console.error("Failed to parse ConsoleWishlist from localStorage:", e);
+      }
+    }
+    setLoadedFromStorage(true);
+  }, []);
 
   return (
     <div className="flex gap-5">
@@ -77,7 +90,7 @@ const ClientConsole = ({ consoleData }: Props) => {
           <div className="flex justify-center">
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
-            transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+              transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
               Add To Basket
               <FaArrowRight />

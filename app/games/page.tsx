@@ -47,11 +47,11 @@ const Games = () => {
 
   return (
     <div className="w-full h-full mt-24">
-      <div className="items-center justify-center text-center bg-red-600 w-full h-[170px]">
+      <div className="items-center justify-center text-center bg-red-700 w-full h-[170px]">
         <div className="mx-[500px] text-left pt-4 ">
           <div className="border-b-1">
             <div className="w-[400px] ">
-              <h1 className="text-5xl font-bold text-gray-300  pb-2">
+              <h1 className="text-5xl font-bold text-white  pb-2">
                 Shop All Games By Platform
               </h1>
             </div>

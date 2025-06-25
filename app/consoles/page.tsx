@@ -8,7 +8,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { availableConsoles, filteredBacklogConsoles } from "./consoleArrays";
 import Modal from "../Components/Modal/Modal";
-import { Product } from "../Components/Modal/Modal";
+import { Product } from "../Components/Product/Products"; 
 import Link from "next/link";
 
 const Consoles = () => {

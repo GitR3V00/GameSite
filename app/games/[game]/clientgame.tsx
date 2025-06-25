@@ -11,7 +11,7 @@ type Props = {
   gameData: Game;
 };
 
-type GameWishlistItem = {
+export type GameWishlistItem = {
   game: Game;
   selectedPlatform?: Platform | string;
 };
@@ -24,38 +24,50 @@ const ClientGame = ({ gameData }: Props) => {
     useState<string>(initialPlatform);
 
   const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
+  const [loadedFromStorage, setLoadedFromStorage] = useState(false);
+
+  
+  const updateWishlist = (updater: (prev: GameWishlistItem[]) => GameWishlistItem[]) => {
+    setGameWishlist((prev) => {
+      const updated = updater(prev);
+      localStorage.setItem("GameWishlist", JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   const isInWishlist = gameWishlist.some(
     (item) => item.game.id === gameData.id
   );
 
   const toggleWishlist = () => {
-    if (isInWishlist) {
-      setGameWishlist(
-        gameWishlist.filter((item) => item.game.id !== gameData.id)
-      );
-    } else {
-      setGameWishlist([
-        ...gameWishlist,
-        {
-          game: gameData,
-          ...(selectedPlatform && { selectedPlatform }),
-        },
-      ]);
-    }
+    updateWishlist((prev) => {
+      const exists = prev.some((item) => item.game.id === gameData.id);
+      if (exists) {
+        return prev.filter((item) => item.game.id !== gameData.id);
+      } else {
+        return [
+          ...prev,
+          {
+            game: gameData,
+            ...(selectedPlatform && { selectedPlatform }),
+          },
+        ];
+      }
+    });
   };
 
-  useEffect(() => {
-    const storedWishlist = localStorage.getItem("GameWishlist");
-    if (storedWishlist) {
-      setGameWishlist(JSON.parse(storedWishlist));
-    }
-  }, []);
 
   useEffect(() => {
-    const wishlistString = JSON.stringify(gameWishlist);
-    localStorage.setItem("GameWishlist", wishlistString);
-  }, [gameWishlist]);
+    const stored = localStorage.getItem("GameWishlist");
+    if (stored) {
+      try {
+        setGameWishlist(JSON.parse(stored));
+      } catch (e) {
+        console.error("Failed to parse GameWishlist from localStorage:", e);
+      }
+    }
+    setLoadedFromStorage(true);
+  }, []);
 
   return (
     <div className="flex gap-5">
@@ -94,7 +106,7 @@ const ClientGame = ({ gameData }: Props) => {
           <div className="flex justify-center">
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
-            transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+              transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
               Add To Basket
               <FaArrowRight />
@@ -103,7 +115,7 @@ const ClientGame = ({ gameData }: Props) => {
           <div className="flex justify-center">
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
-            transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+              transition-all duration-200 hover:scale-105 hover:bg-gray-400"
               onClick={toggleWishlist}
             >
               {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
