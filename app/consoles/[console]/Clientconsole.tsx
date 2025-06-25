@@ -15,10 +15,7 @@ const ClientConsole = ({ consoleData }: Props) => {
   const [consoleWishlist, setConsoleWishlist] = useState<Product[]>([]);
   const [loadedFromStorage, setLoadedFromStorage] = useState(false);
 
-  
-  const updateWishlist = (
-    updater: (prev: Product[]) => Product[]
-  ) => {
+  const updateWishlist = (updater: (prev: Product[]) => Product[]) => {
     setConsoleWishlist((prev) => {
       const updated = updater(prev);
       localStorage.setItem("ConsoleWishlist", JSON.stringify(updated));
