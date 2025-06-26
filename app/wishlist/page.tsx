@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Console } from "../consoles/consoleArrays";
 import { GameWishlistItem } from "../games/[game]/clientgame";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Modal from "../Components/Modal/Modal";
-import { Product } from "../Components/Product/Products";
+
 
  export type WishlistItem = Console | GameWishlistItem;
 
