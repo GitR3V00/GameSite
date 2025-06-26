@@ -29,7 +29,7 @@ const Navbar = () => {
     { name: "Home", url: "/" },
     { name: "About Us", url: "/about" },
     { name: "Consoles", url: "/consoles" },
-    { name: "Games", url: "/games" }
+    { name: "Games", url: "/games" },
   ];
 
   return (
@@ -53,10 +53,14 @@ const Navbar = () => {
           <button className="p-4 bg-white text-black font-semibold rounded-lg cursor-pointer hover:bg-gray-200">
             Contact Us
           </button>
-          <FaShoppingBasket className="w-8 h-8 cursor-pointer" />
-          <Link href={'/wishlist'}>
-          <FaHeart className="cursor-pointer w-6 h-6" />
-            </Link>
+
+          <Link href={"/basket"}>
+            <FaShoppingBasket className="w-8 h-8 cursor-pointer" />
+          </Link>
+
+          <Link href={"/wishlist"}>
+            <FaHeart className="cursor-pointer w-6 h-6" />
+          </Link>
         </div>
       </div>
     </div>

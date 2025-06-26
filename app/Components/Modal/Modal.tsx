@@ -15,27 +15,21 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
   const [selectedImg, setSelectedImg] = useState(0);
 
-  
   const isGameItem = (
     item: Product | GameWishlistItem
   ): item is GameWishlistItem => (item as GameWishlistItem).game !== undefined;
 
- 
+  useEffect(() => {
+    if (isGameItem(product) && product.selectedPlatform) {
+      setSelectedPlatform(product.selectedPlatform);
+    }
+  }, [product]);
 
- useEffect(() => {
+  const [selectedPlatform, setSelectedPlatform] = useState<string>();
 
-  if (isGameItem(product) && product.selectedPlatform) {
-    setSelectedPlatform(product.selectedPlatform);
-  }
-}, [product]);
-  
-  const [selectedPlatform, setSelectedPlatform] =
-      useState<string>();
-  
-     let url = isGameItem(product)
-  ? `/games/${product.game.slug}/?platform=${selectedPlatform}`
-  : `/consoles/${product.slug}`; 
-
+  const url = isGameItem(product)
+    ? `/games/${product.game.slug}/?platform=${selectedPlatform}`
+    : `/consoles/${product.slug}`;
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 bg-black/50 flex items-center justify-center">
@@ -46,10 +40,10 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
         >
           &times;
         </button>
-         <Link href={url} >
-        <h1 className="text-2xl font-bold mb-4 text-black">
-          {isGameItem(product) ? product.game.name : product.name}
-        </h1>
+        <Link href={url}>
+          <h1 className="text-2xl font-bold mb-4 text-black">
+            {isGameItem(product) ? product.game.name : product.name}
+          </h1>
         </Link>
         <div className="flex gap-2">
           <div className="flex-row">
@@ -120,7 +114,7 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
         <p className="mt-2 font-bold text-black">
           {isGameItem(product) ? product.game.Price : product.Price}
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           {isGameItem(product) ? (
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
@@ -140,45 +134,50 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
                   : "Add to Basket"}
                 <FaArrowRight />
               </button>
-              <p className="font-semibold text-[12px] mt-2 text-gray-400">
-                *If a product is purchased as Backorder this will take longer to
-                ship and deliver*
-              </p>
             </div>
           )}
-           <button
-                 onClick={() => {
-                  onRemove(product);
-                 onClose();
-                }}
-                className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
+          <button
+            onClick={() => {
+              onRemove(product);
+              onClose();
+            }}
+            className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-red-400"
-              >
-                Remove from wishlist 
-              </button>
+          >
+            Remove from wishlist
+          </button>
         </div>
-                <div>
-                  {isGameItem(product) && !product.selectedPlatform ? (<>
-                   {product.game.platform.map((platform) => (
-              <div key={platform}>
-                <button
-                  onClick={() => setSelectedPlatform(platform)}
-                  className={`p-2 rounded-lg mt-10 cursor-pointer transition-all duration-200 hover:scale-105 ${
-                    platform === selectedPlatform
-                      ? "bg-gray-300 border-1 border-gray-500"
-                      : "bg-gray-500 hover:bg-gray-400"
-                  }`}
-                >
-                  {platform}
-                </button>
-              </div>
-            ))}
-                 </>) : (<div>
-                        {}
-                  </div>)
-                  }
+        <div>
+          {isGameItem(product) && !product.selectedPlatform ? (
+            <>
+              {product.game.platform.map((platform) => (
+                <div key={platform}>
+                  <p className="font-semibold text-[12px] mt-2 text-gray-400">
+                    Please select a platform before adding to basket!
+                  </p>
+                  <button
+                    onClick={() => setSelectedPlatform(platform)}
+                    className={`p-2 rounded-lg mt-2 cursor-pointer transition-all duration-200 hover:scale-105 ${
+                      platform === selectedPlatform
+                        ? "bg-gray-300 border-1 border-gray-500"
+                        : "bg-gray-500 hover:bg-gray-400"
+                    }`}
+                  >
+                    {platform}
+                  </button>
                 </div>
-       
+              ))}
+            </>
+          ) : (
+            <div>{}</div>
+          )}
+        </div>
+        <div>
+          <p className="font-semibold text-[12px] mt-2 text-gray-400">
+            *If a product is purchased as Backorder this will take longer to
+            ship and deliver*
+          </p>
+        </div>
       </div>
     </div>
   );

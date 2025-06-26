@@ -4,12 +4,9 @@ import { Console } from "../consoles/consoleArrays";
 import { GameWishlistItem } from "../games/[game]/clientgame";
 import Image from "next/image";
 import Modal from "../Components/Modal/Modal";
-
-
- export type WishlistItem = Console | GameWishlistItem;
+export type WishlistItem = Console | GameWishlistItem;
 
 const getStoredItem = <T,>(key: string): T[] => {
-
   const item = localStorage.getItem(key);
   if (!item) return [];
   try {
@@ -22,30 +19,34 @@ const getStoredItem = <T,>(key: string): T[] => {
 
 const Wishlist = () => {
   const [openModal, setOpenModal] = useState(false);
- const [selectedProduct, setSelectedProduct] = useState<WishlistItem | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<WishlistItem | null>(
+    null
+  );
   const [consoleWishlist, setConsoleWishlist] = useState<Console[]>([]);
   const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("Consoles");
 
   const handleRemoveFromWishlist = (product: WishlistItem) => {
-  if (isGameItem(product)) {
-    const updatedGameList = gameWishlist.filter(
-      (item) => item.game.id !== product.game.id
-    );
-    setGameWishlist(updatedGameList);
-    localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
-  } else {
-  
-    const updatedConsoleList = consoleWishlist.filter(
-      (item) => item.id !== product.id
-    );
-    setConsoleWishlist(updatedConsoleList);
-    localStorage.setItem("ConsoleWishlist", JSON.stringify(updatedConsoleList));
-  }
+    if (isGameItem(product)) {
+      const updatedGameList = gameWishlist.filter(
+        (item) => item.game.id !== product.game.id
+      );
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = consoleWishlist.filter(
+        (item) => item.id !== product.id
+      );
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
 
-  setOpenModal(false);
-  setSelectedProduct(null);
-};
+    setOpenModal(false);
+    setSelectedProduct(null);
+  };
 
   const renderWishList = () => {
     switch (activeCategory) {
@@ -167,14 +168,16 @@ const Wishlist = () => {
         })}
       </div>
       {openModal && selectedProduct && (
-  <Modal
-    product={selectedProduct}
-    onClose={() => {
-      setOpenModal(false);
-      setSelectedProduct(null);
-    }}
-     onRemove={handleRemoveFromWishlist}    />
-)}
+        <Modal
+          product={selectedProduct}
+          onClose={() => {
+            setOpenModal(false);
+            setSelectedProduct(null);
+          }}
+          onRemove={handleRemoveFromWishlist}
+        />
+      )}
+      <div></div>
     </div>
   );
 };
