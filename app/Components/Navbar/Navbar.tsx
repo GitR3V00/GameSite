@@ -29,7 +29,7 @@ const Navbar = () => {
     { name: "Home", url: "/" },
     { name: "About Us", url: "/about" },
     { name: "Consoles", url: "/consoles" },
-    { name: "Games", url: "/games" },
+    { name: "Games", url: "/games" }
   ];
 
   return (
@@ -54,7 +54,9 @@ const Navbar = () => {
             Contact Us
           </button>
           <FaShoppingBasket className="w-8 h-8 cursor-pointer" />
-          <FaHeart className="cursor-pointer w-7 h-7" />
+          <Link href={'/wishlist'}>
+          <FaHeart className="cursor-pointer w-6 h-6" />
+            </Link>
         </div>
       </div>
     </div>
