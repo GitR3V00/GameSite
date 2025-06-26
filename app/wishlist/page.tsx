@@ -11,9 +11,6 @@ import { Product } from "../Components/Product/Products";
 
 const getStoredItem = <T,>(key: string): T[] => {
 
-
-
-
   const item = localStorage.getItem(key);
   if (!item) return [];
   try {
