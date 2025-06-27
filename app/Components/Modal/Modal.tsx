@@ -5,6 +5,7 @@ import { Product } from "../Product/Products";
 import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import Link from "next/link";
 import { WishlistItem } from "@/app/wishlist/page";
+import { addToBasket } from "../Basket/BasketUtils";
 
 interface ModalProps {
   product: WishlistItem;
@@ -117,6 +118,7 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
         <div className="flex gap-2">
           {isGameItem(product) ? (
             <button
+              onClick={() => addToBasket(product)}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >

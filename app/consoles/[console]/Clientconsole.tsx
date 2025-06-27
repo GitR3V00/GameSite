@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Console } from "../consoleArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
-import { Product } from "@/app/Components/Product/Products";
+import { addToBasket } from "../../Components/Basket/BasketUtils";
 
 type Props = {
   consoleData: Console;
@@ -12,10 +12,10 @@ type Props = {
 
 const ClientConsole = ({ consoleData }: Props) => {
   const [selectedImg, setSelectedImg] = useState(0);
-  const [consoleWishlist, setConsoleWishlist] = useState<Product[]>([]);
+  const [consoleWishlist, setConsoleWishlist] = useState<Console[]>([]);
   const [loadedFromStorage, setLoadedFromStorage] = useState(false);
 
-  const updateWishlist = (updater: (prev: Product[]) => Product[]) => {
+  const updateWishlist = (updater: (prev: Console[]) => Console[]) => {
     setConsoleWishlist((prev) => {
       const updated = updater(prev);
       localStorage.setItem("ConsoleWishlist", JSON.stringify(updated));
@@ -86,6 +86,7 @@ const ClientConsole = ({ consoleData }: Props) => {
           <p className="text-black">{consoleData.description}</p>
           <div className="flex justify-center">
             <button
+              onClick={() => addToBasket(consoleData)}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
               transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >

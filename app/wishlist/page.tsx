@@ -4,6 +4,7 @@ import { Console } from "../consoles/consoleArrays";
 import { GameWishlistItem } from "../games/[game]/clientgame";
 import Image from "next/image";
 import Modal from "../Components/Modal/Modal";
+import { isGameItem } from "../Components/Basket/BasketUtils";
 export type WishlistItem = Console | GameWishlistItem;
 
 const getStoredItem = <T,>(key: string): T[] => {
@@ -71,10 +72,6 @@ const Wishlist = () => {
   }, []);
 
   const wishlistCategory: string[] = ["Consoles", "Games"];
-
-  const isGameItem = (
-    item: Console | GameWishlistItem
-  ): item is GameWishlistItem => (item as GameWishlistItem).game !== undefined;
 
   return (
     <div className="w-full h-full mt-24">

@@ -6,6 +6,7 @@ import { Game } from "../GameArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 import { Platform } from "../GameArrays";
+import { addToBasket } from "@/app/Components/Basket/BasketUtils";
 
 type Props = {
   gameData: Game;
@@ -26,8 +27,9 @@ const ClientGame = ({ gameData }: Props) => {
   const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
   const [loadedFromStorage, setLoadedFromStorage] = useState(false);
 
-  
-  const updateWishlist = (updater: (prev: GameWishlistItem[]) => GameWishlistItem[]) => {
+  const updateWishlist = (
+    updater: (prev: GameWishlistItem[]) => GameWishlistItem[]
+  ) => {
     setGameWishlist((prev) => {
       const updated = updater(prev);
       localStorage.setItem("GameWishlist", JSON.stringify(updated));
@@ -55,7 +57,6 @@ const ClientGame = ({ gameData }: Props) => {
       }
     });
   };
-
 
   useEffect(() => {
     const stored = localStorage.getItem("GameWishlist");
@@ -105,6 +106,12 @@ const ClientGame = ({ gameData }: Props) => {
           <p className="text-black">{gameData.description}</p>
           <div className="flex justify-center">
             <button
+              onClick={() =>
+                addToBasket({
+                  game: gameData,
+                  ...(selectedPlatform && { selectedPlatform }),
+                })
+              }
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
               transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
