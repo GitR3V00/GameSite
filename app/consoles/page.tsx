@@ -8,12 +8,12 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { availableConsoles, filteredBacklogConsoles } from "./consoleArrays";
 import Modal from "../Components/Modal/Modal";
-import { Product } from "../Components/Product/Products"; 
+import { Console } from "./consoleArrays";
 import Link from "next/link";
 
 const Consoles = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Console | null>(null);
 
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
@@ -68,6 +68,7 @@ const Consoles = () => {
             setOpenModal(false);
             setSelectedProduct(null);
           }}
+          onRemove={() => {}}
         />
       )}
 

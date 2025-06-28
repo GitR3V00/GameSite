@@ -103,6 +103,9 @@ const ClientGame = ({ gameData }: Props) => {
         <div className="flex-col">
           <h1 className="font-semibold text-black"> Description: </h1>
           <p className="text-black">{gameData.description}</p>
+          <div className="mt-5 font-semibold text-black">
+            <h1>{gameData.Price}</h1>
+          </div>
           <div className="flex justify-center">
             <button
               onClick={() =>

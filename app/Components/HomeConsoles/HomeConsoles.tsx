@@ -2,15 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { Console, consoles } from "@/app/consoles/consoleArrays";
 
 const HomeConsoles = () => {
-  const homeConsoles = [
-    { img: "/Playstation5.jpg", name: "Playstation 5" },
-    { img: "/XboxSeriesX.jpg", name: "Xbox Series X" },
-    { img: "/Gamecube.jpg", name: "Gamecube" },
-    { img: "/Playstation2.jpg", name: "Playstation 2" },
-    { img: "/NintendoDS.jpg", name: "Nintendo DS" },
-  ];
+  const homeConsoles: Console[] = [...consoles.slice(0, 5)];
 
   return (
     <div className="h-[800px] w-full mt-14 overflow-hidden relative">
@@ -34,14 +29,16 @@ const HomeConsoles = () => {
                 className="h-[550px] w-[350px] bg-gray-300/85 p-6 rounded-2xl shadow-2xl
                 transition-all duration-200 hover:scale-105 cursor-pointer"
               >
-                <Image
-                  src={console.img}
-                  alt={console.name}
-                  width={350}
-                  height={550}
-                  className="top-0 left-0 w-[350px] h-[350px] rounded-2xl opacity-100"
-                />
-                <h1 className="font-bold text-black mt-4">{console.name}</h1>
+                <Link href={`consoles/${console.slug}`}>
+                  <Image
+                    src={console.img}
+                    alt={console.name}
+                    width={350}
+                    height={550}
+                    className="top-0 left-0 w-[350px] h-[350px] rounded-2xl opacity-100"
+                  />
+                  <h1 className="font-bold text-black mt-4">{console.name}</h1>
+                </Link>
               </div>
             ))}
           </div>

@@ -99,7 +99,7 @@ export const consoles: Console[] = [
   {
     id: 14,
     name: "Playstation 1",
-    img: "/ConsolesPage/Playstation1Console.png",
+    img: "/ConsolesPage/Playstation1Console.jpg",
     slug: "playstation-1",
     description:
       "The original PlayStation introduced 3D gaming to a mainstream audience, with legendary titles like Final Fantasy VII and Metal Gear Solid.",

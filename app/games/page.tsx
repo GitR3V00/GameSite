@@ -96,6 +96,9 @@ const Games = () => {
                 />
                 <div>
                   <p className="text-black">{game.description}</p>
+                  <div className="mt-5 font-semibold text-black">
+                    <h1>{game.Price}</h1>
+                  </div>
                 </div>
               </div>
             </div>
