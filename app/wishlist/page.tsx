@@ -6,17 +6,7 @@ import Image from "next/image";
 import Modal from "../Components/Modal/Modal";
 import { isGameItem } from "../Components/Basket/BasketUtils";
 export type WishlistItem = Console | GameWishlistItem;
-
-const getStoredItem = <T,>(key: string): T[] => {
-  const item = localStorage.getItem(key);
-  if (!item) return [];
-  try {
-    return JSON.parse(item) as T[];
-  } catch (e) {
-    console.error(`Failed to parse localStorage item with key "${key}"`, e);
-    return [];
-  }
-};
+import { getStoredItem } from "./WishlistUtils";
 
 const Wishlist = () => {
   const [openModal, setOpenModal] = useState(false);

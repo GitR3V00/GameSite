@@ -6,6 +6,7 @@ import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import Link from "next/link";
 import { WishlistItem } from "@/app/wishlist/page";
 import { addToBasket } from "../Basket/BasketUtils";
+import { getStoredItem } from "@/app/wishlist/WishlistUtils";
 
 interface ModalProps {
   product: WishlistItem;
@@ -15,6 +16,11 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
   const [selectedImg, setSelectedImg] = useState(0);
+
+  useEffect(() => {
+    const consoles = getStoredItem<Console>("ConsoleWishlist");
+    const games = getStoredItem<GameWishlistItem>("GameWishlist");
+  }, []);
 
   const isGameItem = (
     item: Product | GameWishlistItem
@@ -128,6 +134,7 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
           ) : (
             <div>
               <button
+                onClick={() => addToBasket(product)}
                 className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-gray-400"
               >
@@ -138,16 +145,18 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
               </button>
             </div>
           )}
-          <button
-            onClick={() => {
-              onRemove(product);
-              onClose();
-            }}
-            className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer 
+          <div>
+            <button
+              onClick={() => {
+                onRemove(product);
+                onClose();
+              }}
+              className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-red-400"
-          >
-            Remove from wishlist
-          </button>
+            >
+              Remove from wishlist
+            </button>
+          </div>
         </div>
         <div>
           {isGameItem(product) && !product.selectedPlatform ? (

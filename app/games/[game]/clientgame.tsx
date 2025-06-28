@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Game } from "../GameArrays";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
-import { Platform } from "../GameArrays";
 import { addToBasket } from "@/app/Components/Basket/BasketUtils";
 
 type Props = {
@@ -14,7 +13,7 @@ type Props = {
 
 export type GameWishlistItem = {
   game: Game;
-  selectedPlatform?: Platform | string;
+  selectedPlatform?: string;
 };
 
 const ClientGame = ({ gameData }: Props) => {
