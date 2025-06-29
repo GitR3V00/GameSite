@@ -4,11 +4,11 @@ import { filteredBacklogConsoles } from "../consoleArrays";
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "../../Components/Modal/Modal";
-import { Product } from "../../Components/Modal/Modal";
+import { Console } from "../consoleArrays";
 
 const Backorder = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Console | null>(null);
 
   return (
     <div className="mt-32">
@@ -54,6 +54,7 @@ const Backorder = () => {
             setOpenModal(false);
             setSelectedProduct(null);
           }}
+          onRemove={() => {}}
         />
       )}
     </div>
