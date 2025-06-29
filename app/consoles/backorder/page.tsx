@@ -1,14 +1,64 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { filteredBacklogConsoles } from "../consoleArrays";
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "../../Components/Modal/Modal";
 import { Console } from "../consoleArrays";
+import { GameWishlistItem } from "@/app/games/[game]/clientgame";
+import { isGameItem } from "@/app/Components/Basket/BasketUtils";
+import { WishlistItem } from "@/app/wishlist/page";
+import { getStoredItem } from "@/app/wishlist/WishlistUtils";
 
 const Backorder = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Console | null>(null);
+  const [consoleWishlist, setConsoleWishlist] = useState<Console[]>([]);
+  const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
+
+  useEffect(() => {
+    const consoles = getStoredItem<Console>("ConsoleWishlist");
+    const games = getStoredItem<GameWishlistItem>("GameWishlist");
+    setConsoleWishlist(consoles);
+    setGameWishlist(games);
+  }, []);
+
+  const handleAddToWishlist = (product: WishlistItem) => {
+    if (isGameItem(product)) {
+      const updatedGameList = [...gameWishlist, product];
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = [...consoleWishlist, product];
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
+  };
+
+  const handleRemoveFromWishlist = (product: WishlistItem) => {
+    if (isGameItem(product)) {
+      const updatedGameList = gameWishlist.filter(
+        (item) => item.game.id !== product.game.id
+      );
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = consoleWishlist.filter(
+        (item) => item.id !== product.id
+      );
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
+
+    setOpenModal(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div className="mt-32">
@@ -54,7 +104,10 @@ const Backorder = () => {
             setOpenModal(false);
             setSelectedProduct(null);
           }}
-          onRemove={() => {}}
+          onRemove={handleRemoveFromWishlist}
+          onAdd={handleAddToWishlist}
+          consoleWishlist={consoleWishlist}
+          gameWishlist={gameWishlist}
         />
       )}
     </div>

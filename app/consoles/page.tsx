@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./carouselOverrides.css";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -10,10 +10,21 @@ import { availableConsoles, filteredBacklogConsoles } from "./consoleArrays";
 import Modal from "../Components/Modal/Modal";
 import { Console } from "./consoleArrays";
 import Link from "next/link";
+import { GameWishlistItem } from "../games/[game]/clientgame";
+import { WishlistItem } from "../wishlist/page";
+import { isGameItem } from "../Components/Basket/BasketUtils";
+import { getStoredItem } from "../wishlist/WishlistUtils";
 
 const Consoles = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Console | null>(null);
+
+  useEffect(() => {
+    const consoles = getStoredItem<Console>("ConsoleWishlist");
+    const games = getStoredItem<GameWishlistItem>("GameWishlist");
+    setConsoleWishlist(consoles);
+    setGameWishlist(games);
+  }, []);
 
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
@@ -25,6 +36,46 @@ const Consoles = () => {
 
   const handleClick = (slug: string) => {
     router.push(`/consoles/${slug}`);
+  };
+
+  const [consoleWishlist, setConsoleWishlist] = useState<Console[]>([]);
+  const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
+
+  const handleAddToWishlist = (product: WishlistItem) => {
+    if (isGameItem(product)) {
+      const updatedGameList = [...gameWishlist, product];
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = [...consoleWishlist, product];
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
+  };
+
+  const handleRemoveFromWishlist = (product: WishlistItem) => {
+    if (isGameItem(product)) {
+      const updatedGameList = gameWishlist.filter(
+        (item) => item.game.id !== product.game.id
+      );
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = consoleWishlist.filter(
+        (item) => item.id !== product.id
+      );
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
+
+    setOpenModal(false);
+    setSelectedProduct(null);
   };
 
   return (
@@ -59,7 +110,6 @@ const Consoles = () => {
             </div>
           ))}
       </div>
-      {/*Modal For Back-Order Consoles*/}
 
       {openModal && selectedProduct && (
         <Modal
@@ -68,11 +118,12 @@ const Consoles = () => {
             setOpenModal(false);
             setSelectedProduct(null);
           }}
-          onRemove={() => {}}
+          onRemove={handleRemoveFromWishlist}
+          onAdd={handleAddToWishlist}
+          consoleWishlist={consoleWishlist}
+          gameWishlist={gameWishlist}
         />
       )}
-
-      {/*Backlog section*/}
 
       <div className="mt-20 border-t pt-10">
         <div className="max-w-screen-xl mx-auto px-4">

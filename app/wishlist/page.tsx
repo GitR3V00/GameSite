@@ -17,6 +17,21 @@ const Wishlist = () => {
   const [gameWishlist, setGameWishlist] = useState<GameWishlistItem[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("Consoles");
 
+  const handleAddToWishlist = (product: WishlistItem) => {
+    if (isGameItem(product)) {
+      const updatedGameList = [...gameWishlist, product];
+      setGameWishlist(updatedGameList);
+      localStorage.setItem("GameWishlist", JSON.stringify(updatedGameList));
+    } else {
+      const updatedConsoleList = [...consoleWishlist, product];
+      setConsoleWishlist(updatedConsoleList);
+      localStorage.setItem(
+        "ConsoleWishlist",
+        JSON.stringify(updatedConsoleList)
+      );
+    }
+  };
+
   const handleRemoveFromWishlist = (product: WishlistItem) => {
     if (isGameItem(product)) {
       const updatedGameList = gameWishlist.filter(
@@ -96,7 +111,7 @@ const Wishlist = () => {
             {activeCategory ? activeCategory : "All Games"}
           </h1>
         </div>
-        {renderWishList().map((product, index) => {
+        {renderWishList().map((product) => {
           if (isGameItem(product)) {
             return (
               <div
@@ -162,6 +177,9 @@ const Wishlist = () => {
             setSelectedProduct(null);
           }}
           onRemove={handleRemoveFromWishlist}
+          consoleWishlist={consoleWishlist}
+          gameWishlist={gameWishlist}
+          onAdd={handleAddToWishlist}
         />
       )}
       <div></div>

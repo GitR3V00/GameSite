@@ -1,30 +1,68 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
-import { Product } from "../Product/Products";
+import { FaArrowRight, FaHeart } from "react-icons/fa";
+
 import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import Link from "next/link";
 import { WishlistItem } from "@/app/wishlist/page";
 import { addToBasket } from "../Basket/BasketUtils";
-import { getStoredItem } from "@/app/wishlist/WishlistUtils";
+import { Console } from "@/app/consoles/consoleArrays";
 
 interface ModalProps {
   product: WishlistItem;
   onClose: () => void;
   onRemove: (product: WishlistItem) => void;
+  consoleWishlist: Console[];
+  gameWishlist: GameWishlistItem[];
+  onAdd: (product: WishlistItem) => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
+const Modal: React.FC<ModalProps> = ({
+  product,
+  onClose,
+  onRemove,
+  consoleWishlist,
+  gameWishlist,
+  onAdd,
+}) => {
   const [selectedImg, setSelectedImg] = useState(0);
 
-  useEffect(() => {
-    const consoles = getStoredItem<Console>("ConsoleWishlist");
-    const games = getStoredItem<GameWishlistItem>("GameWishlist");
-  }, []);
+  const isGameItem = (item: WishlistItem): item is GameWishlistItem =>
+    (item as GameWishlistItem).game !== undefined;
 
-  const isGameItem = (
-    item: Product | GameWishlistItem
-  ): item is GameWishlistItem => (item as GameWishlistItem).game !== undefined;
+  const isConsoleItem = (item: WishlistItem): item is Console =>
+    (item as Console).spec !== undefined;
+
+  const isInWishlist = () => {
+    if (isConsoleItem(product)) {
+      return consoleWishlist.some((item) => item.id === product.id);
+    } else if (isGameItem(product)) {
+      return gameWishlist.some((item) => item.game.id === product.game.id);
+    }
+    return false;
+  };
+
+  const handleToggleWishlist = () => {
+    if (isInWishlist()) {
+      onRemove(product);
+    } else {
+      onAdd(product);
+    }
+
+    onClose();
+  };
+
+  const isInAnyWishlist = () => {
+    if (isConsoleItem(product)) {
+      return consoleWishlist.some((item) => item.id === product.id);
+    }
+
+    if (isGameItem(product)) {
+      return gameWishlist.some((item) => item.game.id === product.game.id);
+    }
+
+    return false;
+  };
 
   useEffect(() => {
     if (isGameItem(product) && product.selectedPlatform) {
@@ -148,13 +186,17 @@ const Modal: React.FC<ModalProps> = ({ product, onClose, onRemove }) => {
           <div>
             <button
               onClick={() => {
-                onRemove(product);
+                handleToggleWishlist();
                 onClose();
               }}
-              className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer 
-                    transition-all duration-200 hover:scale-105 hover:bg-red-400"
+              className={`flex items-center justify-center gap-2 text-white ${
+                isInAnyWishlist()
+                  ? "bg-red-500 hover:bg-red-400"
+                  : "bg-gray-500 hover:bg-gray-400"
+              } rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer transition-all duration-200 hover:scale-105`}
             >
-              Remove from wishlist
+              {isInAnyWishlist() ? "Remove from Wishlist" : "Add to Wishlist"}
+              <FaHeart />
             </button>
           </div>
         </div>

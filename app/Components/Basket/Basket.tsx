@@ -37,7 +37,7 @@ const BasketComp = () => {
         </h1>
       </div>
 
-      {basket.map((product, index) => {
+      {basket.map((product) => {
         if (isGameItem(product)) {
           return (
             <div key={product.game.id} className="mx-[500px]">
@@ -138,7 +138,7 @@ const BasketComp = () => {
                   <div className="w-[600px]">
                     <p className="text-black">{product.description}</p>
                   </div>
-                  <div>
+                  <div className="flex-col">
                     <button
                       onClick={() => handleRemoveFromBasket(product)}
                       className="flex items-center justify-center gap-2 text-white bg-red-500 rounded-lg p-2 h-10 w-[300px] mt-4 cursor-pointer 
@@ -146,6 +146,14 @@ const BasketComp = () => {
                     >
                       Remove from Basket
                     </button>
+                    {product.isBacklog ? (
+                      <h1 className="font-semibold text-[12px] mt-2 text-gray-400">
+                        **Console is part of backorder** increased dispatch
+                        time.
+                      </h1>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>
