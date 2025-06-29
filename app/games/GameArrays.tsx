@@ -184,6 +184,40 @@ export const gameArray: Game[] = [
     releaseYear: 2023,
     platform: ["Nintendo"],
   },
+  {
+    id: 31,
+    name: "Grand Theft Auto V",
+    img: "/GamesPage/GTAV.jpg",
+    slug: "gta-v",
+    description:
+      "The biggest, most dynamic, and most diverse open world ever created, Grand Theft Auto V blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game's three lead characters, playing all sides of the game's interwoven story.",
+    images: [
+      "/GamesPage/GTAV_1.jpg",
+      "/GamesPage/GTAV_2.jpg",
+      "/GamesPage/GTAV_3.jpg",
+    ],
+    Price: "£24.99",
+    isBacklog: false,
+    releaseYear: 2013,
+    platform: ["PC", "Playstation", "Xbox"],
+  },
+  {
+    id: 32,
+    name: "EA FC 25 - Ultimate Edition",
+    img: "/GamesPage/EAFC25.jpg",
+    slug: "ea-fc-25-ultimate-edition",
+    description:
+      "EA Sports FC 25 is a football simulation video game published by EA Sports. It is the second installment in the EA Sports FC series and the 32nd overall installment of EA Sports' football simulation games.",
+    images: [
+      "/GamesPage/EAFC_1.jpg",
+      "/GamesPage/EAFC_2.jpg",
+      "/GamesPage/EAFC_3.jpg",
+    ],
+    Price: "£34.99",
+    isBacklog: false,
+    releaseYear: 2024,
+    platform: ["PC", "Playstation", "Xbox"],
+  },
 ];
 
 export const pc = gameArray.filter((game) => game.platform.includes("PC"));

@@ -2,40 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { gameArray } from "@/app/games/GameArrays";
 
 const FeaturedGames = () => {
-  const featuredGames = [
-    {
-      title: "Grand Theft Auto V",
-      price: "£24.99",
-      releaseYear: 2013,
-      img: "/GtaV.jpg",
-    },
-    {
-      title: "EA Sports FC 25 - Ultimate Edition",
-      price: "£34.99",
-      releaseYear: 2024,
-      img: "/EAFC25.jpg",
-    },
-    {
-      title: "Elden Ring",
-      price: "£44.99",
-      releaseYear: 2022,
-      img: "/EldenRing.jpg",
-    },
-    {
-      title: "Call of Duty: Black Ops 6",
-      price: "£34.99",
-      releaseYear: 2024,
-      img: "/BlackOps6.jpg",
-    },
-    {
-      title: "Minecraft",
-      price: "£12.99",
-      releaseYear: 2011,
-      img: "/Minecraft.jpg",
-    },
-  ];
+  const featuredGames = [...gameArray.slice(0, 5)];
 
   return (
     <div className="h-[800px] w-full overflow-hidden relative">
@@ -55,22 +25,24 @@ const FeaturedGames = () => {
           <div className="flex flex-row gap-6">
             {featuredGames.map((game) => (
               <div
-                key={game.title}
+                key={game.name}
                 className="h-[550px] w-[350px] bg-gray-300/85 p-6 rounded-2xl shadow-2xl
                     transition-all duration-200 hover:scale-105 cursor-pointer"
               >
-                <Image
-                  src={game.img}
-                  alt={game.title}
-                  width={350}
-                  height={550}
-                  className="top-0 left-0 w-[350px] h-[350px] rounded-2xl opacity-100"
-                />
-                <h1 className="font-bold text-black mt-4">{game.title}</h1>
-                <h1 className="font-bold text-black mt-4">{game.price}</h1>
-                <h1 className="font-bold text-black mt-4">
-                  {game.releaseYear}
-                </h1>
+                <Link href={`/games/${game.slug}`}>
+                  <Image
+                    src={game.img}
+                    alt={game.name}
+                    width={350}
+                    height={550}
+                    className="top-0 left-0 w-[350px] h-[350px] rounded-2xl opacity-100"
+                  />
+                  <h1 className="font-bold text-black mt-4">{game.name}</h1>
+                  <h1 className="font-bold text-black mt-4">{game.Price}</h1>
+                  <h1 className="font-bold text-black mt-4">
+                    {game.releaseYear}
+                  </h1>
+                </Link>
               </div>
             ))}
           </div>
