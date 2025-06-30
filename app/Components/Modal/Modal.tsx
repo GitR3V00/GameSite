@@ -162,7 +162,7 @@ const Modal: React.FC<ModalProps> = ({
         <div className="flex gap-2">
           {isGameItem(product) ? (
             <button
-              onClick={() => addToBasket(product)}
+              onClick={() => addToBasket({ ...product, quantity: 1 })}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
@@ -172,7 +172,7 @@ const Modal: React.FC<ModalProps> = ({
           ) : (
             <div>
               <button
-                onClick={() => addToBasket(product)}
+                onClick={() => addToBasket({ ...product, quantity: 1 })}
                 className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-gray-400"
               >

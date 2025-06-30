@@ -3,7 +3,11 @@ import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import { Console } from "@/app/consoles/consoleArrays";
 
 
-export type BasketItem = WishlistItem 
+export type BasketItem = WishlistItem & {
+  quantity: number;
+};
+
+export const quantity:number[] = [1,2,3,4,5,6,7,8,9];
 
 const STORAGE_KEY = "Basket";
 
@@ -29,6 +33,7 @@ export function getBasketItemKey(item: BasketItem): string {
 export function addToBasket<T extends BasketItem>(product: T) {
   const current = getStoredBasket();
   const updated = [...current, product];
+  
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 }
 

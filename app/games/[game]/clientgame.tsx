@@ -111,6 +111,7 @@ const ClientGame = ({ gameData }: Props) => {
               onClick={() =>
                 addToBasket({
                   game: gameData,
+                  quantity: 1,
                   ...(selectedPlatform && { selectedPlatform }),
                 })
               }
