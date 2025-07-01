@@ -11,6 +11,20 @@ export const quantity:number[] = [1,2,3,4,5,6,7,8,9];
 
 const STORAGE_KEY = "Basket";
 
+
+export function handlePrice(product: BasketItem): string {
+  const priceStr = isGameItem(product) ? product.game.Price : product.Price;
+
+  const cleaned = priceStr?.replace(/[^\d.]/g, "") ?? "0";
+
+  const price = parseFloat(cleaned);
+  const quantity = Number(product.quantity);
+
+  if (isNaN(price) || isNaN(quantity)) return "0.00";
+
+  return (price * quantity).toFixed(2);
+}
+
 export function getStoredBasket(): BasketItem[] {
   try {
     const data = localStorage.getItem(STORAGE_KEY);

@@ -415,7 +415,6 @@ export const consoles: Console[] = [
     Price: "£250.99",
   },
 
-  // Backlog consoles (no specs)
   {
     id: 26,
     name: "Xbox One",

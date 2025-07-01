@@ -4,6 +4,7 @@ import { BasketItem, getStoredBasket, quantity, url } from "./BasketUtils";
 import { isGameItem } from "./BasketUtils";
 import Image from "next/image";
 import Link from "next/link";
+import { handlePrice } from "./BasketUtils";
 
 const BasketComp = () => {
   const [basket, setBasket] = useState<BasketItem[]>([]);
@@ -24,6 +25,15 @@ const BasketComp = () => {
 
     setBasket(updatedBasket);
     localStorage.setItem("Basket", JSON.stringify(updatedBasket));
+  };
+
+  const calculateBasketTotal = (): string => {
+    const total = basket.reduce((sum, item) => {
+      const itemTotal = parseFloat(handlePrice(item));
+      return sum + (isNaN(itemTotal) ? 0 : itemTotal);
+    }, 0);
+
+    return total.toFixed(2);
   };
 
   return (
@@ -154,6 +164,13 @@ const BasketComp = () => {
                       Remove from Basket
                     </button>
                   </div>
+                  <div>
+                    <p className="text-black mt-40 ml-80">
+                      {product.quantity === 1
+                        ? product.game.Price
+                        : `£${handlePrice(product)}`}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -239,12 +256,26 @@ const BasketComp = () => {
                       )}
                     </div>
                   </div>
+                  <div>
+                    <p className="text-black mt-40 ml-80">
+                      {product.quantity === 1
+                        ? product.Price
+                        : `£${handlePrice(product)}`}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           );
         }
       })}
+      <div className="w-full">
+        <div>
+          <h1 className="text-black text-2xl text-right mr-[586px] mt-3">
+            Total:£{calculateBasketTotal()}
+          </h1>
+        </div>
+      </div>
     </div>
   );
 };
