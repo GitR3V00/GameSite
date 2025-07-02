@@ -11,7 +11,7 @@ const HomeTradeIn = () => {
           <h2>Trade in your old games for money!</h2>
           <div className="flex justify-center">
             <button className="flex items-center justify-center gap-2 text-white bg-gray-600 rounded-lg p-2 w-[300px] mt-4 cursor-pointer">
-              Pre-Order Now <FaArrowRight />
+              Trade in here <FaArrowRight />
             </button>
           </div>
         </div>

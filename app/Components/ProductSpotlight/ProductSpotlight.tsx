@@ -1,6 +1,7 @@
 import React from "react";
 import ProductSwiper from "./ProductSwiper";
 import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 const ProductSpotlight = () => {
   type ProdInfoProps = {
@@ -34,9 +35,11 @@ const ProductSpotlight = () => {
         <h2 className="text-2xl">{productInfo[0].desc}</h2>
 
         <div className="flex justify-center">
+          <Link href={'consoles/nintendo-switch-2'}>
           <button className="flex items-center justify-center gap-2 text-white bg-gray-600 rounded-lg p-2 w-[300px] mt-4 cursor-pointer">
-            Pre-Order Now <FaArrowRight />
+            Purchase Now! <FaArrowRight />
           </button>
+          </Link>
         </div>
       </div>
 

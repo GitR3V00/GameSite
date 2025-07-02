@@ -414,6 +414,33 @@ export const consoles: Console[] = [
     isBacklog: false,
     Price: "£250.99",
   },
+  {
+    id: 31,
+name: "Nintendo Switch 2",
+img: "/ConsolesPage/NintendoSwitch2.jpg",
+slug: "nintendo-switch-2",
+description:
+  "The Nintendo Switch 2 builds on the hybrid success of its predecessor, offering improved performance, a vibrant OLED display, and enhanced battery life for gaming at home or on the go.",
+images: [
+  "/ConsolesPage/NintendoSwitch2_1.jpg",
+  "/ConsolesPage/NintendoSwitch2_2.jpg",
+  "/ConsolesPage/NintendoSwitch2_3.jpg",
+  "/ConsolesPage/NintendoSwitch2_4.jpg",
+  "/ConsolesPage/NintendoSwitch2_5.jpg",
+],
+spec: `
+• **CPU**: Custom NVIDIA ARM-based processor with 8 cores  
+• **GPU**: NVIDIA Ampere architecture, up to ~1.2 TFLOPS  
+• **RAM**: 12 GB LPDDR5  
+• **Storage**: 256 GB internal flash storage; expandable via microSDXC  
+• **Display**: 7-inch OLED, 1080p handheld / up to 4K docked via DLSS  
+• **Connectivity**: Wi‑Fi 6, Bluetooth 5.1, USB-C, headphone jack  
+• **Battery life**: Approx. 6–10 hours depending on usage  
+• **Dimensions**: ~242 × 102 × 13.9 mm; Weight ~420 g (with Joy-Cons)
+`,
+isBacklog: false,
+Price: "£499.99",
+  },
 
   {
     id: 26,
@@ -421,7 +448,11 @@ export const consoles: Console[] = [
     img: "/ConsolesPage/XboxOne.jpg",
     slug: "xbox-one",
     description: "",
-    images: [],
+    images: ["/ConsolesPage/XboxOne_1.jpg",
+      "/ConsolesPage/XboxOne_2.jpg",
+      "/ConsolesPage/XboxOne_3.jpg",
+      "/ConsolesPage/XboxOne_4.jpg",
+      "/ConsolesPage/XboxOne_5.jpg",],
     spec: "",
     isBacklog: true,
     Price: "£89.99",
@@ -432,7 +463,11 @@ export const consoles: Console[] = [
     img: "/ConsolesPage/SNES.jpg",
     slug: "snes",
     description: "",
-    images: [],
+    images: ["/ConsolesPage/SNES_1.jpg",
+      "/ConsolesPage/SNES_2.jpg",
+      "/ConsolesPage/SNES_3.jpg",
+      "/ConsolesPage/SNES_4.jpg",
+      "/ConsolesPage/SNES_5.jpg",],
     spec: "",
     isBacklog: true,
     Price: "£89.99",
@@ -443,7 +478,11 @@ export const consoles: Console[] = [
     img: "/ConsolesPage/N64.jpg",
     slug: "nintendo-64",
     description: "",
-    images: [],
+    images: ["/ConsolesPage/Nintendo64_1.jpg",
+      "/ConsolesPage/Nintendo64_2.jpg",
+      "/ConsolesPage/Nintendo64_3.jpg",
+      "/ConsolesPage/Nintendo64_4.jpg",
+      "/ConsolesPage/Nintendo64_5.jpg",],
     spec: "",
     isBacklog: true,
     Price: "£89.99",
@@ -454,7 +493,11 @@ export const consoles: Console[] = [
     img: "/ConsolesPage/GameboyAdvanceSP.jpg",
     slug: "gameboy-advance-sp",
     description: "",
-    images: [],
+    images: ["/ConsolesPage/GameboyAdvanceSP_1.jpg",
+      "/ConsolesPage/GameboyAdvanceSP_2.jpg",
+      "/ConsolesPage/GameboyAdvanceSP_3.jpg",
+      "/ConsolesPage/GameboyAdvanceSP_4.jpg",
+      "/ConsolesPage/GameboyAdvanceSP_5.jpg",],
     spec: "",
     isBacklog: true,
     Price: "£89.99",
@@ -465,7 +508,11 @@ export const consoles: Console[] = [
     img: "/ConsolesPage/GameAndWatch.jpg",
     slug: "game-and-watch",
     description: "",
-    images: [],
+    images: ["/ConsolesPage/GameAndWatch_1.jpg",
+      "/ConsolesPage/GameAndWatch_2.jpg",
+      "/ConsolesPage/GameAndWatch_3.jpg",
+      "/ConsolesPage/GameAndWatch_4.jpg",
+      "/ConsolesPage/GameAndWatch_5.jpg",],
     spec: "",
     isBacklog: true,
     Price: "£89.99",

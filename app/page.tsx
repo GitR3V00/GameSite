@@ -9,7 +9,7 @@ export default function HomePage() {
     {
       id: 1,
       img: "/Banner1.jpg",
-      title: "Pre-Order the Switch 2 Now !",
+      title: "Purchase the Switch 2 Now !",
       subtitle: "See below for more information",
     },
     {
