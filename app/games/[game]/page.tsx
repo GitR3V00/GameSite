@@ -28,7 +28,10 @@ const GamesPage = async ({ params }: Props) => {
         <ClientGame gameData={gameData} />
       </div>
       <div className="mx-135">
-        <h1 className="text-black font-bold text-3xl mb-2 mt-2"></h1>
+        <h1 className="text-black font-bold text-3xl mb-2 mt-2">
+          Game Description
+        </h1>
+        <p className="text-black">{gameData.description}</p>
       </div>
     </div>
   );
