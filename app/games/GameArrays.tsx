@@ -107,9 +107,9 @@ export const gameArray: Game[] = [
     description:
       "Swing through a bigger, bolder New York in 'Marvel’s Spider-Man 2'. This sequel allows you to play as both Peter Parker and Miles Morales, each with unique abilities, as they face new villains including the terrifying Venom. With faster web-swinging, expanded combat mechanics, and emotional storytelling, the game delivers an exhilarating superhero experience that balances action, drama, and heartfelt moments.",
     images: [
-      "/GamesPage/Spidey2_1.jpg",
+      "/GamesPage/Spidey2_1.png",
       "/GamesPage/Spidey2_2.jpg",
-      "/GamesPage/Spidey2_3.jpg",
+      "/GamesPage/Spidey2_3.jpg.png",
     ],
     Price: "£69.99",
     isBacklog: false,
