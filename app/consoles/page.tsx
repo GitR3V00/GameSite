@@ -169,7 +169,7 @@ const Consoles = () => {
           </div>
           <div className="flex justify-center">
             <Link href={"http://localhost:3000/consoles/backorder"}>
-              <button className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[400px] mt-4 cursor-pointer hover:scale-105 hover:bg-gray-700/85">
+              <button className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[400px] mt-4 cursor-pointer transition-all hover:scale-105 hover:bg-gray-700/85">
                 All Consoles Available for Back-Order
                 <FaArrowRight />
               </button>

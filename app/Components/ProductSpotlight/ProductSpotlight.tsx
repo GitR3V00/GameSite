@@ -35,10 +35,13 @@ const ProductSpotlight = () => {
         <h2 className="text-2xl">{productInfo[0].desc}</h2>
 
         <div className="flex justify-center">
-          <Link href={'consoles/nintendo-switch-2'}>
-          <button className="flex items-center justify-center gap-2 text-white bg-gray-600 rounded-lg p-2 w-[300px] mt-4 cursor-pointer">
-            Purchase Now! <FaArrowRight />
-          </button>
+          <Link href={"consoles/nintendo-switch-2"}>
+            <button
+              className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer
+          transition-all duration-200 hover:scale-110 hover:bg-gray-400"
+            >
+              Purchase Now! <FaArrowRight />
+            </button>
           </Link>
         </div>
       </div>
