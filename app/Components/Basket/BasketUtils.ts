@@ -37,17 +37,35 @@ export function getStoredBasket(): BasketItem[] {
 
 export function getBasketItemKey(item: BasketItem): string {
   if (isGameItem(item)) {
-    return `game-${item.game.id}`;
+    const platformPart = item.selectedPlatform ? `-${item.selectedPlatform}` : "";
+    return `game-${item.game.id}${platformPart}`;
   } else if (isConsoleItem(item)) {
     return `console-${item.id}`;
   }
-  return "unknown"; 
+  return "unknown";
 }
+
 
 export function addToBasket<T extends BasketItem>(product: T) {
   const current = getStoredBasket();
-  const updated = [...current, product];
-  
+
+  const productKey = getBasketItemKey(product);
+
+  const existingIndex = current.findIndex(item => getBasketItemKey(item) === productKey);
+
+  let updated;
+
+  if (existingIndex !== -1) {
+    updated = [...current];
+    const existingItem = updated[existingIndex];
+    updated[existingIndex] = {
+      ...existingItem,
+      quantity: (existingItem.quantity || 1) + 1,
+    };
+  } else {
+    updated = [...current, { ...product, quantity: product.quantity || 1 }];
+  }
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 }
 
