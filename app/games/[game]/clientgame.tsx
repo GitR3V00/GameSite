@@ -106,13 +106,14 @@ const ClientGame = ({ gameData }: Props) => {
           </div>
           <div className="flex justify-center">
             <button
-              onClick={() =>
+              onClick={() => {
                 addToBasket({
                   game: gameData,
                   quantity: 1,
                   ...(selectedPlatform && { selectedPlatform }),
-                })
-              }
+                });
+                window.dispatchEvent(new Event("basket:add"));
+              }}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
               transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
@@ -124,7 +125,11 @@ const ClientGame = ({ gameData }: Props) => {
             <button
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
               transition-all duration-200 hover:scale-105 hover:bg-gray-400"
-              onClick={toggleWishlist}
+              onClick={() => {
+                toggleWishlist();
+                if (!isInWishlist)
+                  window.dispatchEvent(new Event("wishlist:add"));
+              }}
             >
               {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
               <FaHeart />

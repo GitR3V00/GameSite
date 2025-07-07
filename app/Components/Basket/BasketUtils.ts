@@ -1,3 +1,4 @@
+'use client'
 import { WishlistItem } from "@/app/wishlist/page";
 import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import { Console } from "@/app/consoles/consoleArrays";

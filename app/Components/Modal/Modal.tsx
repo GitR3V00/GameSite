@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
-
 import { GameWishlistItem } from "@/app/games/[game]/clientgame";
 import Link from "next/link";
 import { WishlistItem } from "@/app/wishlist/page";
@@ -172,7 +171,10 @@ const Modal: React.FC<ModalProps> = ({
           ) : (
             <div>
               <button
-                onClick={() => addToBasket({ ...product, quantity: 1 })}
+                onClick={() => {
+                  addToBasket({ ...product, quantity: 1 });
+                  window.dispatchEvent(new Event("basket:add"));
+                }}
                 className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                     transition-all duration-200 hover:scale-105 hover:bg-gray-400"
               >
@@ -188,6 +190,10 @@ const Modal: React.FC<ModalProps> = ({
               onClick={() => {
                 handleToggleWishlist();
                 onClose();
+
+                if (!isInAnyWishlist()) {
+                  window.dispatchEvent(new Event("wishlist:add"));
+                }
               }}
               className={`flex items-center justify-center gap-2 text-white ${
                 isInAnyWishlist()

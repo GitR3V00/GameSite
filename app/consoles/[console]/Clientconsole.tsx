@@ -89,7 +89,10 @@ const ClientConsole = ({ consoleData }: Props) => {
           </div>
           <div className="flex justify-center">
             <button
-              onClick={() => addToBasket({ ...consoleData, quantity: 1 })}
+              onClick={() => {
+                addToBasket({ ...consoleData, quantity: 1 });
+                window.dispatchEvent(new Event("basket:add"));
+              }}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
               transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
@@ -99,7 +102,11 @@ const ClientConsole = ({ consoleData }: Props) => {
           </div>
           <div className="flex justify-center">
             <button
-              onClick={toggleWishlist}
+              onClick={() => {
+                toggleWishlist();
+                if (!isInWishlist)
+                  window.dispatchEvent(new Event("wishlist:add"));
+              }}
               className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
                         transition-all duration-200 hover:scale-105 hover:bg-gray-400"
             >
