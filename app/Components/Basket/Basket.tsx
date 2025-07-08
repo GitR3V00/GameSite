@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BasketItem, getStoredBasket, quantity, url } from "./BasketUtils";
 import { isGameItem } from "./BasketUtils";
 import Image from "next/image";
@@ -27,14 +27,13 @@ const BasketComp = () => {
     localStorage.setItem("Basket", JSON.stringify(updatedBasket));
   };
 
-  const calculateBasketTotal = (): string => {
+  const basketTotal = useMemo(() => {
     const total = basket.reduce((sum, item) => {
       const itemTotal = parseFloat(handlePrice(item));
       return sum + (isNaN(itemTotal) ? 0 : itemTotal);
     }, 0);
-
     return total.toFixed(2);
-  };
+  }, [basket]);
 
   return (
     <div className="mt-[140px]">
@@ -272,7 +271,7 @@ const BasketComp = () => {
       <div className="w-full">
         <div>
           <h1 className="text-black text-2xl text-right mr-[586px] mt-3">
-            Total:£{calculateBasketTotal()}
+            Total:£{basketTotal}
           </h1>
         </div>
       </div>
