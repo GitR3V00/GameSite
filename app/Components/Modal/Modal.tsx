@@ -25,6 +25,7 @@ const Modal: React.FC<ModalProps> = ({
   onAdd,
 }) => {
   const [selectedImg, setSelectedImg] = useState(0);
+  const [selectedPlatform, setSelectedPlatform] = useState<string>();
 
   const isGameItem = (item: WishlistItem): item is GameWishlistItem =>
     (item as GameWishlistItem).game !== undefined;
@@ -69,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({
     }
   }, [product]);
 
-  const [selectedPlatform, setSelectedPlatform] = useState<string>();
+ 
 
   const url = isGameItem(product)
     ? `/games/${product.game.slug}/?platform=${selectedPlatform}`

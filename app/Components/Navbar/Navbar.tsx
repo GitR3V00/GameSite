@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaGamepad, FaHeart, FaShoppingBasket } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import ContactModal from "../Modal/ContactUsModal/ContactModal";
 
 type NavProps = {
   name: string;
@@ -11,6 +12,7 @@ type NavProps = {
 
 const Navbar = () => {
   const [navBg, setnavBg] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -40,7 +42,9 @@ const Navbar = () => {
         } fixed top-0 w-full px-[200px] py-4 z-50 flex justify-between items-center transition-all duration-200`}
       >
         <div>
+          <Link href={'/'}>
           <FaGamepad className="w-16 h-16" />
+          </Link>
         </div>
         <div className="flex gap-4">
           {navLinks.map((link) => (
@@ -50,7 +54,9 @@ const Navbar = () => {
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <button className="p-4 bg-white text-black font-semibold rounded-lg cursor-pointer hover:bg-gray-200">
+          <button 
+          onClick={() => setShowContact(true)}
+          className="p-4 bg-white text-black font-semibold rounded-lg cursor-pointer hover:bg-gray-200">
             Contact Us
           </button>
 
@@ -63,6 +69,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+      {showContact ? <ContactModal onClose={()=>setShowContact(false)}/> : <></>}
     </div>
   );
 };
