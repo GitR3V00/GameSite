@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 interface ContactModalProps {
   onClose: () => void;
@@ -24,7 +25,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 bg-black/50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg w-[660px] relative">
+      <motion.div
+        key="modal"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -100, opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="bg-white p-6 rounded-lg w-[660px] relative"
+      >
         <button
           className="absolute top-2 right-2 text-xl font-bold text-black"
           onClick={() => {
@@ -75,7 +83,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
             </form>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

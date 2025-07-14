@@ -70,8 +70,6 @@ const Modal: React.FC<ModalProps> = ({
     }
   }, [product]);
 
- 
-
   const url = isGameItem(product)
     ? `/games/${product.game.slug}/?platform=${selectedPlatform}`
     : `/consoles/${product.slug}`;
