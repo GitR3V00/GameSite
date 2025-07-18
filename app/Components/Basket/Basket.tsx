@@ -274,6 +274,17 @@ const BasketComp = () => {
             Total:£{basketTotal}
           </h1>
         </div>
+        <div className="my-3 ml-[1500px]">
+        <Link href={'/checkout'}>
+        <button
+                     
+                      className="flex items-center justify-center gap-2 text-white bg-gray-500 rounded-lg p-2 w-[300px] mt-4 cursor-pointer 
+                                transition-all duration-200 hover:scale-105 hover:bg-gray-400"
+                    >
+                     Checkout 
+                    </button>
+                    </Link>
+                    </div>
       </div>
     </div>
   );
