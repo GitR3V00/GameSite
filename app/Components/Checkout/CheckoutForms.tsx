@@ -47,6 +47,7 @@ function guestDetailsCheck() {
   {
     setError(true);
   }
+ else setError(false);
 }
 
 function cardDetailsCheck() {
@@ -54,6 +55,7 @@ function cardDetailsCheck() {
   {
     setError(true);
   }
+ else setError(false);
 }
 
 
@@ -65,29 +67,29 @@ function cardDetailsCheck() {
           <label className="text-black w-[200px]">Full Name:</label>
           <input
           onChange={(e) => setGuestFullName(e.target.value)}
-          type="text" className="border border-black flex-1 p-1 text-black" />
+          type="text" className={`border flex-1 p-1 text-black  ${error ? "bg-red-300 border-red-800": "border-black" }`}/> 
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">Address Line 1:</label>
           <input
           onChange={(e) => setGuestAddressLine(e.target.value)}
-          type="text" className="border border-black flex-1 p-1 text-black" />
+          type="text" className={`border flex-1 p-1 text-black  ${error ? "bg-red-300 border-red-800": "border-black" }`}/>
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">Address Line 2:</label>
-          <input type="text" className="border border-black flex-1 p-1 text-black" />
+          <input type="text" className={`border flex-1 p-1 text-black  ${error ? "bg-red-300 border-red-800": "border-black" }`}/> 
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">City:</label>
           <input 
           onChange={(e) => setGuestCity(e.target.value)}
-          type="text" className="border border-black flex-1 p-1 text-black" />
+          type="text" className={`border flex-1 p-1 text-black  ${error ? "bg-red-300 border-red-800": "border-black" }`}/> 
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">PostCode:</label>
           <input type="text" 
           onChange={(e) => setGuestPostcode(e.target.value)}
-          className="border border-black flex-1 p-1 text-black" />
+          className={`border flex-1 p-1 text-black  ${error ? "bg-red-300 border-red-800": "border-black" }`}/>
         </div>
       </form>
         
@@ -120,25 +122,25 @@ function cardDetailsCheck() {
           <label className="text-black w-[200px]">Card Holder Name:</label>
           <input
           onChange={(e) => setCardName(e.target.value)}
-          type="text" className="border border-black flex-1 p-1 text-black" />
+          type="text" className={`border  flex-1 p-1 text-black ${error ? "bg-red-300 border-red-800": "border-black" }`} />
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">Card Number:</label>
           <input
           onChange={(e) => setCardNumber(e.target.value)}
-          type="text" className="border border-black flex-1 p-1 text-black" />
+          type="text" className={`border  flex-1 p-1 text-black ${error ? "bg-red-300 border-red-800": "border-black" }`}/>
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">Sort Code:</label>
           <input 
           onChange={(e) => setSortCode(e.target.value)}
-          type="text" className="border border-black w-[75px] p-1 text-black" />
+          type="text" className={`border  flex-1 p-1 w-[75px] text-black ${error ? "bg-red-300 border-red-800": "border-black" }`} />
         </div>
         <div className="flex items-center mb-2">
           <label className="text-black w-[200px]">Security Code:</label>
           <input
           onChange={(e) => setSecurityCode(e.target.value)}
-          type="text" className="border border-black w-[50px] p-1 text-black" />
+          type="text" className={`border  flex-1 p-1 w-[50px] text-black ${error ? "bg-red-300 border-red-800": "border-black" }`} />
         </div>
       </form>
 
